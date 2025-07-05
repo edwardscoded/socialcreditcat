@@ -108,305 +108,24 @@
             transform: translateY(-2px);
         }
 
-        /* Quiz Modal Styles */
-        .quiz-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: 20px;
-        }
-
-        .quiz-modal.active {
-            display: flex;
-        }
-
-        .quiz-content {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border: 2px solid #00ff41;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 700px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .quiz-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #ff4757;
-            font-size: 1.5rem;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-        }
-
-        .quiz-title {
-            font-size: 2rem;
-            color: #00ff41;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-        }
-
-        .quiz-subtitle {
-            color: #cccccc;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .quiz-warning {
-            color: #ff4757;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        /* Quiz Entry Screen */
-        .quiz-entry {
-            display: block;
-        }
-
-        .quiz-entry.hidden {
-            display: none;
-        }
-
-        .quiz-cat {
-            font-size: 6rem;
-            margin: 20px 0;
-            animation: catPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes catPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .quiz-start-btn {
-            background: transparent;
-            color: #00ff41;
-            border: 2px solid #00ff41;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .quiz-start-btn:hover {
-            background: rgba(0, 255, 65, 0.1);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-        }
-
-        /* Quiz Question Screen */
-        .quiz-question {
-            display: none;
-        }
-
-        .quiz-question.active {
-            display: block;
-        }
-
-        .question-counter {
-            color: #ffab00;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            font-size: 1.4rem;
-            color: #ffffff;
-            margin-bottom: 30px;
-            line-height: 1.4;
-        }
-
-        .quiz-answers {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .answer-btn {
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid #333;
-            color: #ffffff;
-            padding: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .answer-btn:hover {
-            border-color: #00ff41;
-            background: rgba(0, 255, 65, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .answer-score {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .answer-score.positive {
-            color: #00ff41;
-        }
-
-        .answer-score.negative {
-            color: #ff4757;
-        }
-
-        .score-display-quiz {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #333;
-            padding: 15px;
-            border-radius: 8px;
-            color: #00ff41;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* Quiz Results */
-        .quiz-results {
-            display: none;
-        }
-
-        .quiz-results.active {
-            display: block;
-        }
-
-        .result-score {
-            font-size: 3rem;
-            color: #00ff41;
-            margin: 20px 0;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-        }
-
-        .result-rank {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .result-verdict {
-            font-size: 1.1rem;
-            color: #cccccc;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .result-cat {
-            font-size: 8rem;
-            margin: 20px 0;
-        }
-
-        .result-actions {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .result-btn {
-            background: transparent;
-            border: 2px solid;
-            padding: 12px 24px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-        }
-
-        .result-btn.share {
-            border-color: #1da1f2;
-            color: #1da1f2;
-        }
-
-        .result-btn.share:hover {
-            background: rgba(29, 161, 242, 0.1);
-        }
-
-        .result-btn.retry {
-            border-color: #ffab00;
-            color: #ffab00;
-        }
-
-        .result-btn.retry:hover {
-            background: rgba(255, 171, 0, 0.1);
-        }
-
-        /* Rank Colors */
-        .rank-divine { color: #ffd700; }
-        .rank-trusted { color: #00ff41; }
-        .rank-suspicious { color: #ffab00; }
-        .rank-panjeet { color: #ff4757; }
-        .rank-traitor { color: #8b0000; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .quiz-content {
-                padding: 20px;
-                margin: 10px;
-            }
-
-            .quiz-title {
-                font-size: 1.5rem;
-            }
-
-            .question-text {
-                font-size: 1.2rem;
-            }
-
-            .result-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
         .cat-container {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .cat-image {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid #333;
+        .cat-fallback {
+            font-size: 15rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            user-select: none;
         }
 
-        .cat-image:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        .cat-fallback:hover {
+            transform: scale(1.1);
         }
 
-        .cat-image.clicked {
+        .cat-fallback.clicked {
             animation: shake 0.5s ease-in-out;
         }
 
@@ -530,6 +249,262 @@
             50% { transform: scale(0.95); }
             100% { transform: scale(1); }
         }
+
+        /* Refresh Button */
+        .refresh-btn {
+            background: transparent;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Quiz Modal Styles */
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .quiz-modal.active {
+            display: flex;
+        }
+
+        .quiz-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #00ff41;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .quiz-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ff4757;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .quiz-title {
+            font-size: 2rem;
+            color: #00ff41;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .quiz-subtitle {
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .quiz-warning {
+            color: #ff4757;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .quiz-entry {
+            display: block;
+        }
+
+        .quiz-entry.hidden {
+            display: none;
+        }
+
+        .quiz-cat {
+            font-size: 6rem;
+            margin: 20px 0;
+            animation: catPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes catPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .quiz-start-btn {
+            background: transparent;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .quiz-start-btn:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .quiz-question {
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+        }
+
+        .question-counter {
+            color: #ffab00;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .quiz-answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .answer-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #333;
+            color: #ffffff;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .answer-btn:hover {
+            border-color: #00ff41;
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .score-display-quiz {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            color: #00ff41;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .quiz-results {
+            display: none;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: #00ff41;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .result-rank {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .result-verdict {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .result-cat {
+            font-size: 8rem;
+            margin: 20px 0;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .result-btn {
+            background: transparent;
+            border: 2px solid;
+            padding: 12px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .result-btn.share {
+            border-color: #1da1f2;
+            color: #1da1f2;
+        }
+
+        .result-btn.share:hover {
+            background: rgba(29, 161, 242, 0.1);
+        }
+
+        .result-btn.retry {
+            border-color: #ffab00;
+            color: #ffab00;
+        }
+
+        .result-btn.retry:hover {
+            background: rgba(255, 171, 0, 0.1);
+        }
+
+        .rank-divine { color: #ffd700; }
+        .rank-trusted { color: #00ff41; }
+        .rank-suspicious { color: #ffab00; }
+        .rank-panjeet { color: #ff4757; }
+        .rank-traitor { color: #8b0000; }
 
         /* Lore Panel */
         .lore-panel {
@@ -657,9 +632,8 @@
                 font-size: 3rem;
             }
 
-            .cat-image {
-                width: 250px;
-                height: 250px;
+            .cat-fallback {
+                font-size: 10rem;
             }
 
             .behavior-grid {
@@ -674,20 +648,24 @@
             .container {
                 padding: 15px;
             }
-        }
 
-        /* Glitch Effect for Score */
-        .score-glitch {
-            animation: glitch 0.3s ease-in-out;
-        }
+            .quiz-content {
+                padding: 20px;
+                margin: 10px;
+            }
 
-        @keyframes glitch {
-            0% { transform: translateX(0); }
-            20% { transform: translateX(-2px); }
-            40% { transform: translateX(2px); }
-            60% { transform: translateX(-2px); }
-            80% { transform: translateX(2px); }
-            100% { transform: translateX(0); }
+            .quiz-title {
+                font-size: 1.5rem;
+            }
+
+            .question-text {
+                font-size: 1.2rem;
+            }
+
+            .result-actions {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         /* Particle Effect */
@@ -724,12 +702,7 @@
                     <button class="cta-button" onclick="openQuiz()">GET JUDGED NOW</button>
                 </div>
                 <div class="cat-container">
-                    <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/cat-image.jpg" 
-                         alt="Social Credit Cat" 
-                         class="cat-image" 
-                         id="catImage"
-                         onerror="this.style.display='none'; document.getElementById('catFallback').style.display='block';">
-                    <div id="catFallback" style="display: none; font-size: 15rem;">😿</div>
+                    <div class="cat-fallback" id="catFallback">😿</div>
                 </div>
             </div>
         </div>
@@ -738,76 +711,21 @@
         <div class="behavior-grid" id="terminal">
             <div class="behavior-section positive">
                 <div class="behavior-title">POSITIVE BEHAVIORS</div>
-                <div class="behavior-list">
-                    <div class="behavior-item" onclick="updateScore(1000, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">Sleep on bag</div>
-                        <div class="behavior-score">+1000</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(300, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">Active in VC</div>
-                        <div class="behavior-score">+300</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(500, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">Pump trenches</div>
-                        <div class="behavior-score">+500</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(8000, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">idc abt price<br>we mun</div>
-                        <div class="behavior-score">+8000</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(400, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">Respek charts</div>
-                        <div class="behavior-score">+400</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-400, this)">
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text"></div>
-                        <div class="behavior-score">-400</div>
-                    </div>
+                <div class="behavior-list" id="positiveList">
+                    <!-- Behaviors will be populated here -->
                 </div>
             </div>
 
             <div class="behavior-section negative">
                 <div class="behavior-title">NEGATIVE INFRACTIONS</div>
-                <div class="behavior-list">
-                    <div class="behavior-item" onclick="updateScore(-200, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Play 'Pump it up'</div>
-                        <div class="behavior-score">-200</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-6969, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Why mooning?</div>
-                        <div class="behavior-score">-6969</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-1000, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Panjeet</div>
-                        <div class="behavior-score">-1000</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-5000, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Celeb Dickriding<br>(Ansem)</div>
-                        <div class="behavior-score">-5000</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-800, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Madapes call</div>
-                        <div class="behavior-score">-800</div>
-                    </div>
-                    <div class="behavior-item" onclick="updateScore(-900, this)">
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">Where is dev?</div>
-                        <div class="behavior-score">-900</div>
-                    </div>
+                <div class="behavior-list" id="negativeList">
+                    <!-- Behaviors will be populated here -->
                 </div>
             </div>
         </div>
+
+        <!-- Refresh Button -->
+        <button class="refresh-btn" onclick="populateBehaviors()">🔄 REFRESH BEHAVIORS</button>
 
         <!-- Lore Panel -->
         <div class="lore-panel">
@@ -844,7 +762,7 @@
         <!-- Share Panel -->
         <div class="share-panel">
             <div class="tweet-preview" id="tweetPreview">
-                I just got +9000 $SCC for sleeping on bag and respek charts. #SocialCreditCat 🐾
+                I just got +50000000000 SCC points! The Social Credit Cat has judged me worthy! 🐾 #SocialCreditCat
             </div>
             <button class="share-btn" onclick="shareToTwitter()">TWEET MY $SCC</button>
         </div>
@@ -859,7 +777,7 @@
                     <div class="quiz-title">🧪 BEGIN YOUR EVALUATION</div>
                     <div class="quiz-subtitle">The Cat is watching. Answer wisely.</div>
                     <div class="quiz-warning">Your responses will be recorded and judged.</div>
-                    <div class="quiz-cat">😿</div>
+                    <div class="quiz-cat" id="quizCat">😿</div>
                     <button class="quiz-start-btn" onclick="startQuiz()">GET JUDGED</button>
                 </div>
 
@@ -890,14 +808,342 @@
     <script>
         let currentScore = parseInt(localStorage.getItem('sccScore') || '50000000000');
 
+        // Quiz questions database
+        const allQuizQuestions = [
+            {question: "The chart is down 30%. What do you do?", answers: [{text: "I buy more.", score: 600}, {text: "Where is dev?", score: -1000}, {text: "Post a saluting cat.", score: 300}]},
+            {question: "Project hasn't tweeted in 12 hours.", answers: [{text: "Dev is building.", score: 500}, {text: "This is dead.", score: -800}, {text: "Tag dev in all caps.", score: -400}]},
+            {question: "What's true meme coin utility?", answers: [{text: "The meme.", score: 1000}, {text: "Strong fundamentals.", score: -600}, {text: "Chart is utility.", score: 500}]},
+            {question: "Someone gets banned in Telegram.", answers: [{text: "Mods are kings.", score: 300}, {text: "FREE HIM NOW.", score: -500}, {text: "I didn't see anything.", score: 200}]},
+            {question: "You bought the top again.", answers: [{text: "Still holding.", score: 400}, {text: "Blame influencer.", score: -900}, {text: "Averaging up.", score: 500}]},
+            {question: "VC is loud and chaotic.", answers: [{text: "Join and scream.", score: 600}, {text: "Ask for roadmap.", score: -300}, {text: "Just vibe.", score: 400}]},
+            {question: "They announce a celebrity collab.", answers: [{text: "Exit.", score: 1000}, {text: "Bullish.", score: -700}, {text: "Only bullish if it's a cat.", score: 600}]},
+            {question: "Red candle hits the chart.", answers: [{text: "Zoom out.", score: 300}, {text: "Rug pull?", score: -600}, {text: "Post cope meme.", score: 200}]},
+            {question: "How often do you check price?", answers: [{text: "Once a day.", score: 900}, {text: "Every minute.", score: -300}, {text: "I turned off notifications.", score: 500}]},
+            {question: "Someone calls a coin.", answers: [{text: "Buy instantly.", score: -800}, {text: "DYOR first.", score: 700}, {text: "Ignore, I'm loyal.", score: 500}]},
+            {question: "You see someone foot fetish post in main chat.", answers: [{text: "+1.", score: -400}, {text: "Report.", score: 200}, {text: "Cat pic to neutralize.", score: 600}]},
+            {question: "Dev voice reveals and sounds like a teen.", answers: [{text: "King.", score: 300}, {text: "Scammer.", score: -500}, {text: "Post cat salute.", score: 500}]},
+            {question: "You get rugged. Again.", answers: [{text: "Lesson learned.", score: 400}, {text: "SUE THEM.", score: -800}, {text: "It's just money.", score: 500}]},
+            {question: "Someone types 'When Lambo?'", answers: [{text: "Downvote.", score: 300}, {text: "I'm also wondering…", score: -600}, {text: "Report to Social Credit Cat.", score: 700}]},
+            {question: "Project uses Comic Sans font.", answers: [{text: "Instant buy.", score: 500}, {text: "This is a joke.", score: -400}, {text: "It's based.", score: 800}]},
+            {question: "Community wants a DAO vote.", answers: [{text: "Vote yes for chaos.", score: 300}, {text: "We don't need democracy.", score: 500}, {text: "Vote no on everything.", score: -500}]},
+            {question: "Chart hits ATH.", answers: [{text: "Take profit.", score: -200}, {text: "Post memes only.", score: 600}, {text: "Buy more.", score: 400}]},
+            {question: "Team locks LP for 1 month.", answers: [{text: "That's solid.", score: -300}, {text: "That's nothing.", score: -600}, {text: "At least it's not unlocked.", score: 200}]},
+            {question: "Whitepaper is 1 page.", answers: [{text: "Perfect.", score: 800}, {text: "Need more detail.", score: -200}, {text: "I didn't read it.", score: 500}]},
+            {question: "Dev starts dating a community member.", answers: [{text: "Deserved.", score: 500}, {text: "Conflict of interest.", score: -700}, {text: "Add it to the roadmap.", score: 700}]},
+            {question: "Meme coin hits top 100.", answers: [{text: "Dump incoming.", score: -300}, {text: "We go higher.", score: 400}, {text: "I fear this is the end.", score: 100}]},
+            {question: "You win a giveaway.", answers: [{text: "Send back to the treasury.", score: 1000}, {text: "Sell it instantly.", score: -800}, {text: "Thank the Cat.", score: 600}]},
+            {question: "Team releases a staking pool.", answers: [{text: "Exit now.", score: 800}, {text: "Let me farm.", score: -200}, {text: "Ignore.", score: 300}]},
+            {question: "You lose your seed phrase.", answers: [{text: "LOL.", score: -1000}, {text: "I wrote it on a napkin.", score: -500}, {text: "Backed it up twice.", score: 700}]},
+            {question: "Your mom asks what you do for work.", answers: [{text: "I trade meme coins.", score: 800}, {text: "I say I'm unemployed.", score: 200}, {text: "I lie.", score: -600}]},
+            {question: "Dev says 'we building.'", answers: [{text: "King behavior.", score: 500}, {text: "That means nothing.", score: -500}, {text: "I believe.", score: 600}]},
+            {question: "Telegram mods start banning for jokes.", answers: [{text: "Mods = gods.", score: 400}, {text: "I fight back.", score: -700}, {text: "I log off.", score: 500}]},
+            {question: "A whale sells 10% of supply.", answers: [{text: "He'll be back.", score: 300}, {text: "This is why I never trust anyone.", score: -400}, {text: "I sell too.", score: -600}]},
+            {question: "Favorite influencer flips on the project.", answers: [{text: "They were always fake.", score: 700}, {text: "They know something…", score: -500}, {text: "Post cat with knife.", score: 600}]},
+            {question: "Gas is 300 gwei.", answers: [{text: "Touch nothing.", score: 600}, {text: "I ape anyway.", score: -900}, {text: "I go outside.", score: 500}]},
+            {question: "You get added to a shill group.", answers: [{text: "Report.", score: 700}, {text: "Post project link.", score: -500}, {text: "Leave instantly.", score: 500}]},
+            {question: "Friend tells you to buy Doge.", answers: [{text: "I say okay.", score: -400}, {text: "I tell them about Solana gems.", score: 600}, {text: "I send cat meme back.", score: 500}]},
+            {question: "You sleep on the chart and miss 20x.", answers: [{text: "It's fine.", score: 300}, {text: "I cry publicly.", score: -200}, {text: "I wasn't in it anyway.", score: 500}]},
+            {question: "You find out the dev is 16.", answers: [{text: "Respect.", score: 600}, {text: "Run.", score: -300}, {text: "Only bullish if he's based.", score: 400}]},
+            {question: "Community creates custom cat stickers.", answers: [{text: "I spam them daily.", score: 1000}, {text: "I mute the chat.", score: -800}, {text: "I make my own.", score: 700}]},
+            {question: "You are asked to shill on Twitter.", answers: [{text: "I create propaganda.", score: 800}, {text: "Only if paid.", score: -400}, {text: "I ghost them.", score: 200}]},
+            {question: "Airdrop hunters join the chat.", answers: [{text: "Mass kick.", score: 400}, {text: "Welcome new frens.", score: -200}, {text: "Teach them the lore.", score: 600}]},
+            {question: "You see a 0 tax token trending.", answers: [{text: "Instantly sus.", score: 700}, {text: "This is bullish.", score: -400}, {text: "Wait for second pump.", score: 200}]},
+            {question: "Telegram chat hits 10K members.", answers: [{text: "Bot check.", score: 500}, {text: "Engagement farm time.", score: -300}, {text: "Only real ones matter.", score: 600}]},
+            {question: "Someone says 'only floor is the grave.'", answers: [{text: "Bars.", score: 600}, {text: "Unnecessary.", score: -300}, {text: "Follow immediately.", score: 700}]},
+            {question: "You leak a meme early.", answers: [{text: "Oops.", score: -500}, {text: "It's alpha.", score: 600}, {text: "Leak more.", score: -400}]},
+            {question: "Dev wallet buys back tokens.", answers: [{text: "Resurrected.", score: 700}, {text: "Exit pump.", score: -200}, {text: "Ride it.", score: 500}]},
+            {question: "You win a whitelist spot.", answers: [{text: "Tell everyone.", score: 400}, {text: "Sell it.", score: -600}, {text: "Gloat silently.", score: 200}]},
+            {question: "Market cap hits 1M.", answers: [{text: "Exit liquidity.", score: -400}, {text: "Start a cult.", score: 900}, {text: "Set new target.", score: 600}]},
+            {question: "Solana network goes down.", answers: [{text: "We ride through it.", score: 300}, {text: "Solana dead.", score: -500}, {text: "Post funny cat gif.", score: 700}]},
+            {question: "You lose 50% in one day.", answers: [{text: "Based.", score: 200}, {text: "Cry.", score: -200}, {text: "Go again.", score: 500}]},
+            {question: "ETH maxis flood the timeline.", answers: [{text: "Ratio them.", score: 600}, {text: "Respect.", score: -300}, {text: "Ignore.", score: 200}]},
+            {question: "Meme coin community wins a poll.", answers: [{text: "Victory lap.", score: 700}, {text: "Brigaded.", score: -400}, {text: "Post cat crown meme.", score: 600}]},
+            {question: "Dev sends a selfie.", answers: [{text: "Bullish.", score: 500}, {text: "Red flag.", score: -300}, {text: "Screenshot it.", score: 200}]},
+            {question: "Meme coin hits 100 holders.", answers: [{text: "Organic growth.", score: 600}, {text: "No thanks.", score: -500}, {text: "Perfect timing.", score: 500}]}
+        ];
+        
+        // Behaviors database
+        const allBehaviors = [
+            // Positive Behaviors
+            {text: "Sleep on bag", score: 1000, type: "positive"},
+            {text: "Active in VC", score: 800, type: "positive"},
+            {text: "Vow eternal hold", score: 800, type: "positive"},
+            {text: "Buy more at 3am", score: 600, type: "positive"},
+            {text: "Write lore for project", score: 600, type: "positive"},
+            {text: "Welcome new frens", score: 1500, type: "positive"},
+            {text: "Draw fan art of cat", score: 200, type: "positive"},
+            {text: "Pump trenches", score: 500, type: "positive"},
+            {text: "Create copium art", score: 600, type: "positive"},
+            {text: "Create meme thread", score: 600, type: "positive"},
+            {text: "Respek charts", score: 1500, type: "positive"},
+            {text: "Post cat gif hourly", score: 2000, type: "positive"},
+            {text: "Use $SCC in bio", score: 1000, type: "positive"},
+            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
+            {text: "Defend dev in VC", score: 400, type: "positive"},
+            {text: "Worship cat altar", score: 500, type: "positive"},
+            {text: "Correct FUD with facts", score: 1200, type: "positive"},
+            {text: "Memecoin evangelism", score: 1200, type: "positive"},
+            {text: "Post cat meme during dip", score: 400, type: "positive"},
+            {text: "Say 'we mun' with tears", score: 500, type: "positive"},
+            {text: "Make propaganda posters", score: 500, type: "positive"},
+            {text: "Use custom cat PFP", score: 1500, type: "positive"},
+            {text: "Diamond hand through -90%", score: 2000, type: "positive"},
+            {text: "Convert family to $SCC", score: 1000, type: "positive"},
+            {text: "Tattoo cat on body", score: 1500, type: "positive"},
+            {text: "Name pet after project", score: 800, type: "positive"},
+            {text: "Stream chart watching", score: 600, type: "positive"},
+            {text: "Create TikTok dances", score: 400, type: "positive"},
+            {text: "Commission cat NFTs", score: 1000, type: "positive"},
+            {text: "Start cat cult", score: 2000, type: "positive"},
+            {text: "Meditate to chart", score: 300, type: "positive"},
+            {text: "Sacrifice to cat god", score: 1500, type: "positive"},
+            {text: "Learn meow language", score: 500, type: "positive"},
+            {text: "Build cat shrine", score: 800, type: "positive"},
+            {text: "Fast for the project", score: 600, type: "positive"},
+            {text: "Pledge life savings", score: 1200, type: "positive"},
+            {text: "Quit job for $SCC", score: 1800, type: "positive"},
+            {text: "Move to cat island", score: 2000, type: "positive"},
+            {text: "Become cat whisperer", score: 1000, type: "positive"},
+            {text: "Start meme factory", score: 800, type: "positive"},
+            {text: "Train as ninja cat", score: 600, type: "positive"},
+            {text: "Eat only cat food", score: 400, type: "positive"},
+            {text: "Sleep 20 hours daily", score: 300, type: "positive"},
+            {text: "Purr in meetings", score: 500, type: "positive"},
+            {text: "Develop cat vision", score: 700, type: "positive"},
+            {text: "Master cat reflexes", score: 600, type: "positive"},
+            {text: "Grow whiskers", score: 400, type: "positive"},
+            {text: "Hunt laser pointers", score: 300, type: "positive"},
+            {text: "Climb trees professionally", score: 500, type: "positive"},
+            {text: "Knock things off tables", score: 200, type: "positive"},
+
+            // Negative Behaviors
+            {text: "Post negative tweet", score: -400, type: "negative"},
+            {text: "Complain during VC", score: -1000, type: "negative"},
+            {text: "Play 'Pump it up'", score: -400, type: "negative"},
+            {text: "Ask 'Where is dev?'", score: -1500, type: "negative"},
+            {text: "Ask for mod role", score: -600, type: "negative"},
+            {text: "Leave Telegram group", score: -200, type: "negative"},
+            {text: "Undermine lore", score: -600, type: "negative"},
+            {text: "Mention market cap", score: -400, type: "negative"},
+            {text: "Say 'I'm early exit'", score: -200, type: "negative"},
+            {text: "VC while drunk crying", score: -6969, type: "negative"},
+            {text: "Exit at breakeven", score: -800, type: "negative"},
+            {text: "Sell before ATH", score: -400, type: "negative"},
+            {text: "Panjeet", score: -1000, type: "negative"},
+            {text: "Post bearish chart", score: -600, type: "negative"},
+            {text: "Ask for utility", score: -900, type: "negative"},
+            {text: "Insult the saluting cat", score: -1000, type: "negative"},
+            {text: "Leak alpha", score: -1500, type: "negative"},
+            {text: "Copy other coin memes", score: -800, type: "negative"},
+            {text: "Say 'Why mooning?'", score: -800, type: "negative"},
+            {text: "Beg for whitelist", score: -6969, type: "negative"},
+            {text: "Hate on community art", score: -2000, type: "negative"},
+            {text: "Post non-cat meme", score: -2000, type: "negative"},
+            {text: "Fake giveaway in chat", score: -2000, type: "negative"},
+            {text: "Shill in general chat", score: -800, type: "negative"},
+            {text: "Spam celebrity tag", score: -900, type: "negative"},
+            {text: "Paper hand at -10%", score: -500, type: "negative"},
+            {text: "Fomo into scam coin", score: -1200, type: "negative"},
+            {text: "Trust influencer blindly", score: -800, type: "negative"},
+            {text: "Sell on fake news", score: -600, type: "negative"},
+            {text: "Buy high sell low", score: -1000, type: "negative"},
+            {text: "Chase pumps daily", score: -400, type: "negative"},
+            {text: "Ignore red flags", score: -800, type: "negative"},
+            {text: "Leverage 100x", score: -2000, type: "negative"},
+            {text: "Trust anon devs", score: -600, type: "negative"},
+            {text: "Skip due diligence", score: -500, type: "negative"},
+            {text: "Believe exit scam", score: -1500, type: "negative"},
+            {text: "Fall for rug pull", score: -1000, type: "negative"},
+            {text: "Get rekt by MEV", score: -800, type: "negative"},
+            {text: "Lose keys in hack", score: -2000, type: "negative"},
+            {text: "Send to wrong address", score: -1500, type: "negative"},
+            {text: "Get phished easily", score: -1000, type: "negative"},
+            {text: "Click suspicious links", score: -600, type: "negative"},
+            {text: "Share seed phrase", score: -3000, type: "negative"},
+            {text: "Store coins on exchange", score: -400, type: "negative"},
+            {text: "Use weak passwords", score: -300, type: "negative"},
+            {text: "Ignore security warnings", score: -500, type: "negative"},
+            {text: "Connect to malicious dapps", score: -800, type: "negative"},
+            {text: "Approve unlimited tokens", score: -600, type: "negative"},
+            {text: "Trust random airdrops", score: -400, type: "negative"},
+            {text: "Click on fake tweets", score: -300, type: "negative"},
+            {text: "Join pump groups", score: -1000, type: "negative"},
+            {text: "Pay for signals", score: -800, type: "negative"},
+            {text: "Buy insider tips", score: -1200, type: "negative"},
+            {text: "Trust telegram bots", score: -600, type: "negative"},
+            {text: "Follow fake accounts", score: -400, type: "negative"},
+            {text: "Believe obvious scams", score: -1000, type: "negative"},
+            {text: "Get emotional trading", score: -500, type: "negative"},
+            {text: "Revenge trade losses", score: -800, type: "negative"},
+            {text: "Ignore risk management", score: -600, type: "negative"},
+            {text: "Overtrade positions", score: -400, type: "negative"},
+            {text: "Hold onto losers", score: -500, type: "negative"},
+            {text: "Cut winners early", score: -600, type: "negative"},
+            {text: "Time market poorly", score: -400, type: "negative"},
+            {text: "Follow herd mentality", score: -300, type: "negative"},
+            {text: "Panic sell bottoms", score: -800, type: "negative"},
+            {text: "Fomo buy tops", score: -600, type: "negative"},
+            {text: "Ignore fundamentals", score: -400, type: "negative"},
+            {text: "Chase green candles", score: -500, type: "negative"},
+            {text: "Sell red candles", score: -600, type: "negative"},
+            {text: "Ignore chart patterns", score: -300, type: "negative"},
+            {text: "Miss support levels", score: -400, type: "negative"},
+            {text: "Break through resistance", score: -500, type: "negative"},
+            {text: "Ignore volume signals", score: -300, type: "negative"},
+            {text: "Miss trend reversals", score: -600, type: "negative"},
+            {text: "Fight the trend", score: -500, type: "negative"},
+            {text: "Catch falling knives", score: -800, type: "negative"},
+            {text: "Average down losers", score: -400, type: "negative"},
+            {text: "Ignore stop losses", score: -600, type: "negative"},
+            {text: "Move stops against", score: -500, type: "negative"},
+            {text: "Hold through crashes", score: -1000, type: "negative"},
+            {text: "Ignore exit signals", score: -400, type: "negative"},
+            {text: "Stay in bad trades", score: -500, type: "negative"},
+            {text: "Hope instead of plan", score: -300, type: "negative"},
+            {text: "Pray for recovery", score: -400, type: "negative"},
+            {text: "Deny obvious losses", score: -500, type: "negative"},
+            {text: "Refuse to adapt", score: -600, type: "negative"},
+            {text: "Stick to failing strategy", score: -400, type: "negative"},
+            {text: "Ignore market changes", score: -500, type: "negative"},
+            {text: "Fight new paradigms", score: -600, type: "negative"},
+            {text: "Resist innovation", score: -400, type: "negative"},
+            {text: "Fear new technology", score: -300, type: "negative"},
+            {text: "Avoid learning", score: -500, type: "negative"},
+            {text: "Stay in comfort zone", score: -400, type: "negative"},
+            {text: "Resist change", score: -300, type: "negative"},
+            {text: "Cling to past", score: -400, type: "negative"},
+            {text: "Live in denial", score: -500, type: "negative"},
+            {text: "Ignore reality", score: -600, type: "negative"},
+            {text: "Create false narratives", score: -400, type: "negative"},
+            {text: "Believe own lies", score: -500, type: "negative"},
+            {text: "Spread misinformation", score: -800, type: "negative"},
+            {text: "Promote bad projects", score: -1000, type: "negative"},
+            {text: "Shill known scams", score: -1500, type: "negative"},
+            {text: "Deceive newcomers", score: -1200, type: "negative"},
+            {text: "Take advantage of noobs", score: -1000, type: "negative"},
+            {text: "Exploit trust", score: -800, type: "negative"},
+            {text: "Break promises", score: -600, type: "negative"},
+            {text: "Abandon commitments", score: -500, type: "negative"},
+            {text: "Betray community", score: -1500, type: "negative"},
+            {text: "Sell out friends", score: -1200, type: "negative"},
+            {text: "Choose money over morals", score: -1000, type: "negative"},
+            {text: "Sacrifice integrity", score: -800, type: "negative"},
+            {text: "Compromise values", score: -600, type: "negative"},
+            {text: "Abandon principles", score: -500, type: "negative"},
+            {text: "Lose sight of purpose", score: -400, type: "negative"},
+            {text: "Forget original mission", score: -300, type: "negative"},
+            {text: "Drift from goals", score: -400, type: "negative"},
+            {text: "Lose focus completely", score: -500, type: "negative"},
+            {text: "Give up too easily", score: -300, type: "negative"},
+            {text: "Quit when needed", score: -400, type: "negative"},
+            {text: "Abandon ship early", score: -500, type: "negative"},
+            {text: "Jump to next trend", score: -300, type: "negative"},
+            {text: "Chase shiny objects", score: -400, type: "negative"},
+            {text: "Lack consistency", score: -300, type: "negative"},
+            {text: "Show no persistence", score: -400, type: "negative"},
+            {text: "Have no patience", score: -300, type: "negative"},
+            {text: "Want instant results", score: -400, type: "negative"},
+            {text: "Expect easy money", score: -500, type: "negative"},
+            {text: "Believe get rich quick", score: -600, type: "negative"},
+            {text: "Think trading is gambling", score: -400, type: "negative"},
+            {text: "Treat market like casino", score: -500, type: "negative"},
+            {text: "Bet life savings", score: -1000, type: "negative"},
+            {text: "Risk everything", score: -800, type: "negative"},
+            {text: "Go all in always", score: -600, type: "negative"},
+            {text: "Never diversify", score: -400, type: "negative"},
+            {text: "Put eggs one basket", score: -500, type: "negative"},
+            {text: "Ignore position sizing", score: -300, type: "negative"},
+            {text: "Overlever positions", score: -600, type: "negative"},
+            {text: "Use excessive margin", score: -500, type: "negative"},
+            {text: "Borrow to trade", score: -800, type: "negative"},
+            {text: "Mortgage house for crypto", score: -1500, type: "negative"},
+            {text: "Sell car for tokens", score: -1000, type: "negative"},
+            {text: "Cash out retirement", score: -1200, type: "negative"},
+            {text: "Steal from family", score: -2000, type: "negative"},
+            {text: "Lie about losses", score: -800, type: "negative"},
+            {text: "Hide trading addiction", score: -600, type: "negative"},
+            {text: "Ignore family needs", score: -500, type: "negative"},
+            {text: "Neglect relationships", score: -400, type: "negative"},
+            {text: "Choose charts over love", score: -600, type: "negative"},
+            {text: "Trade during dates", score: -300, type: "negative"},
+            {text: "Check prices at wedding", score: -500, type: "negative"},
+            {text: "Wake up for Asian markets", score: -200, type: "negative"},
+            {text: "Set alarms for pumps", score: -300, type: "negative"},
+            {text: "Never sleep properly", score: -400, type: "negative"},
+            {text: "Develop eye strain", score: -200, type: "negative"},
+            {text: "Get carpal tunnel", score: -300, type: "negative"},
+            {text: "Ruin posture completely", score: -200, type: "negative"},
+            {text: "Forget to eat meals", score: -300, type: "negative"},
+            {text: "Live on energy drinks", score: -400, type: "negative"},
+            {text: "Skip showers for trading", score: -300, type: "negative"},
+            {text: "Wear same clothes weekly", score: -200, type: "negative"},
+            {text: "Become antisocial", score: -500, type: "negative"},
+            {text: "Avoid real world", score: -400, type: "negative"},
+            {text: "Live in basement", score: -300, type: "negative"},
+            {text: "Order food only", score: -200, type: "negative"},
+            {text: "Never go outside", score: -400, type: "negative"},
+            {text: "Lose touch with reality", score: -600, type: "negative"},
+            {text: "Develop paranoia", score: -500, type: "negative"},
+            {text: "Trust no one", score: -400, type: "negative"},
+            {text: "See conspiracies everywhere", score: -600, type: "negative"},
+            {text: "Blame market manipulation", score: -300, type: "negative"},
+            {text: "Think everything rigged", score: -400, type: "negative"},
+            {text: "Cry about whales", score: -200, type: "negative"},
+            {text: "Hate successful traders", score: -500, type: "negative"},
+            {text: "Envy others profits", score: -300, type: "negative"},
+            {text: "Feel bitter constantly", score: -400, type: "negative"},
+            {text: "Complain about everything", score: -300, type: "negative"},
+            {text: "Spread negativity", score: -500, type: "negative"},
+            {text: "Bring others down", score: -600, type: "negative"},
+            {text: "Discourage newbies", score: -400, type: "negative"},
+            {text: "Share horror stories", score: -300, type: "negative"},
+            {text: "Focus on worst cases", score: -400, type: "negative"},
+            {text: "Expect everything fail", score: -300, type: "negative"},
+            {text: "Have no hope", score: -500, type: "negative"},
+            {text: "Give up on dreams", score: -600, type: "negative"},
+            {text: "Accept mediocrity", score: -400, type: "negative"},
+            {text: "Stop trying improve", score: -300, type: "negative"},
+            {text: "Remain willfully ignorant", score: -500, type: "negative"},
+            {text: "Refuse to learn", score: -400, type: "negative"},
+            {text: "Reject good advice", score: -300, type: "negative"},
+            {text: "Ignore wise mentors", score: -500, type: "negative"},
+            {text: "Think you know everything", score: -600, type: "negative"},
+            {text: "Never admit mistakes", score: -400, type: "negative"},
+            {text: "Blame others always", score: -500, type: "negative"},
+            {text: "Take no responsibility", score: -300, type: "negative"},
+            {text: "Play victim constantly", score: -400, type: "negative"},
+            {text: "Make excuses daily", score: -200, type: "negative"},
+            {text: "Justify bad decisions", score: -300, type: "negative"},
+            {text: "Rationalize failures", score: -400, type: "negative"},
+            {text: "Deny obvious truths", score: -500, type: "negative"},
+            {text: "Live in fantasy", score: -600, type: "negative"},
+            {text: "Escape from problems", score: -300, type: "negative"},
+            {text: "Avoid difficult conversations", score: -200, type: "negative"},
+            {text: "Hide from consequences", score: -400, type: "negative"},
+            {text: "Run from responsibility", score: -300, type: "negative"},
+            {text: "Procrastinate important tasks", score: -200, type: "negative"},
+            {text: "Delay crucial decisions", score: -300, type: "negative"},
+            {text: "Put off learning", score: -400, type: "negative"},
+            {text: "Postpone hard work", score: -300, type: "negative"},
+            {text: "Avoid challenging yourself", score: -400, type: "negative"},
+            {text: "Fear taking risks", score: -300, type: "negative"},
+            {text: "Avoid new opportunities", score: -400, type: "negative"},
+            {text: "Reject positive changes", score: -300, type: "negative"},
+            {text: "Resist personal growth", score: -500, type: "negative"},
+            {text: "Stop self improvement", score: -400, type: "negative"}
+        ];
+
+        // Quiz variables
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+        let godModeActivated = false;
+        let catClickCount = 0;
+
         function updateScoreDisplay() {
             const scoreElement = document.getElementById('scoreValue');
             const formattedScore = currentScore >= 0 ? `+${currentScore.toLocaleString()}` : currentScore.toLocaleString();
             scoreElement.textContent = formattedScore;
-            
-            // Add glitch effect
-            scoreElement.classList.add('score-glitch');
-            setTimeout(() => scoreElement.classList.remove('score-glitch'), 300);
         }
 
         function updateScore(change, element) {
@@ -959,6 +1205,57 @@
             }
         }
 
+        function getRandomBehaviors() {
+            const positiveActions = allBehaviors.filter(b => b.type === "positive");
+            const negativeActions = allBehaviors.filter(b => b.type === "negative");
+            
+            // Get 6 random from each type
+            const shuffledPositive = [...positiveActions].sort(() => 0.5 - Math.random()).slice(0, 6);
+            const shuffledNegative = [...negativeActions].sort(() => 0.5 - Math.random()).slice(0, 6);
+            
+            return {
+                positive: shuffledPositive,
+                negative: shuffledNegative
+            };
+        }
+
+        function populateBehaviors() {
+            const { positive, negative } = getRandomBehaviors();
+            
+            const positiveContainer = document.getElementById('positiveList');
+            const negativeContainer = document.getElementById('negativeList');
+            
+            // Clear existing
+            positiveContainer.innerHTML = '';
+            negativeContainer.innerHTML = '';
+            
+            // Add positive behaviors
+            positive.forEach(behavior => {
+                const behaviorDiv = document.createElement('div');
+                behaviorDiv.className = 'behavior-item';
+                behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
+                behaviorDiv.innerHTML = `
+                    <div class="behavior-icon">✓</div>
+                    <div class="behavior-text">${behavior.text}</div>
+                    <div class="behavior-score">+${behavior.score}</div>
+                `;
+                positiveContainer.appendChild(behaviorDiv);
+            });
+            
+            // Add negative behaviors
+            negative.forEach(behavior => {
+                const behaviorDiv = document.createElement('div');
+                behaviorDiv.className = 'behavior-item';
+                behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
+                behaviorDiv.innerHTML = `
+                    <div class="behavior-icon">✗</div>
+                    <div class="behavior-text">${behavior.text}</div>
+                    <div class="behavior-score">${behavior.score}</div>
+                `;
+                negativeContainer.appendChild(behaviorDiv);
+            });
+        }
+
         function toggleLore() {
             const content = document.getElementById('loreContent');
             const toggle = document.getElementById('loreToggle');
@@ -982,9 +1279,9 @@
             if (currentScore >= 10000000) {
                 message = `I just achieved ${formattedScore} $SCC! The Social Credit Cat has blessed me with supreme diamond hands! 💎🐾 #SocialCreditCat`;
             } else if (currentScore >= 0) {
-                message = `I just got ${formattedScore} $SCC for sleeping on bag and respek charts. #SocialCreditCat 🐾`;
+                message = `I just got ${formattedScore} $SCC points! The Social Credit Cat is watching my every move! 🐾 #SocialCreditCat`;
             } else {
-                message = `I'm at ${formattedScore} $SCC... The cat is NOT pleased. Straight to the Panjeet Zone! 😾🐾 #SocialCreditCat`;
+                message = `I'm at ${formattedScore} $SCC points... The cat is NOT pleased. Straight to the Panjeet Zone! 😾🐾 #SocialCreditCat`;
             }
             
             preview.textContent = message;
@@ -1000,313 +1297,7 @@
             document.getElementById('terminal').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Cat click easter egg
-        document.getElementById('catImage').addEventListener('click', function() {
-            this.classList.add('clicked');
-            setTimeout(() => this.classList.remove('clicked'), 500);
-            
-            updateScore(-420, this);
-            
-            setTimeout(() => {
-                alert('You clicked the cat! -420 $SCC for disturbing our supreme leader! 😾');
-            }, 100);
-        });
-
-        // Initialize
-        updateScoreDisplay();
-        updateTweetPreview();
-
-        // Initialize with dynamic behavior loading
-        let allBehaviors = [];
-        
-        // Function to load all 500 behaviors from CSV
-        async function loadBehaviors() {
-            try {
-                const csvData = await window.fs.readFile('Complete_Social_Credit_Cat_Actions.csv', { encoding: 'utf8' });
-                
-                // Parse CSV using simple parsing (since we know the structure)
-                const lines = csvData.split('\n');
-                const behaviors = [];
-                
-                for (let i = 1; i < lines.length; i++) { // Skip header
-                    const line = lines[i].trim();
-                    if (line) {
-                        const parts = line.split(',');
-                        if (parts.length >= 3) {
-                            const action = parts[0].replace(/"/g, '').trim();
-                            const points = parseInt(parts[1]);
-                            const type = parts[2].replace(/"/g, '').trim().toLowerCase();
-                            
-                            if (action && !isNaN(points) && type) {
-                                behaviors.push({
-                                    text: action,
-                                    score: points,
-                                    type: type
-                                });
-                            }
-                        }
-                    }
-                }
-                
-                console.log(`Loaded ${behaviors.length} behaviors from CSV`);
-                return behaviors;
-            } catch (error) {
-                console.log('Could not load CSV, using fallback behaviors');
-                // Fallback to basic behaviors if CSV fails
-                return [
-                    {text: "Sleep on bag", score: 1000, type: "positive"},
-                    {text: "Active in VC", score: 300, type: "positive"},
-                    {text: "Pump trenches", score: 500, type: "positive"},
-                    {text: "idc abt price we mun", score: 8000, type: "positive"},
-                    {text: "Respek charts", score: 400, type: "positive"},
-                    {text: "Blind faith in saluting cat", score: 2000, type: "positive"},
-                    {text: "Play 'Pump it up'", score: -200, type: "negative"},
-                    {text: "Why mooning?", score: -6969, type: "negative"},
-                    {text: "Panjeet", score: -1000, type: "negative"},
-                    {text: "Celeb Dickriding (Ansem)", score: -5000, type: "negative"},
-                    {text: "Madapes call", score: -800, type: "negative"},
-                    {text: "Where is dev?", score: -900, type: "negative"}
-                ];
-            }
-        }text: "Create meme thread", score: 400, type: "positive"},
-            {text: "Buy more at 3am", score: 1200, type: "positive"},
-            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
-            {text: "Post cat meme during dip", score: 400, type: "positive"},
-            {text: "Sleep on bag", score: 200, type: "positive"},
-            {text: "Worship cat altar", score: 1200, type: "positive"},
-            {text: "Buy more at 3am", score: 2000, type: "positive"},
-            {text: "Create meme thread", score: 800, type: "positive"},
-            {text: "Say 'we mun' with tears", score: 500, type: "positive"},
-            {text: "Write lore for project", score: 300, type: "positive"},
-
-            // Behaviors 51-100
-            {text: "Sleep on bag", score: 500, type: "positive"},
-            {text: "Correct FUD with facts", score: 1200, type: "positive"},
-            {text: "Engage in psyops", score: 800, type: "positive"},
-            {text: "Engage in psyops", score: 800, type: "positive"},
-            {text: "Create meme thread", score: 300, type: "positive"},
-            {text: "Buy more at 3am", score: 600, type: "positive"},
-            {text: "Vow eternal hold", score: 800, type: "positive"},
-            {text: "Run community game", score: 200, type: "positive"},
-            {text: "Engage in psyops", score: 800, type: "positive"},
-            {text: "Run community game", score: 500, type: "positive"},
-            {text: "Make propaganda posters", score: 500, type: "positive"},
-            {text: "Correct FUD with facts", score: 1500, type: "positive"},
-            {text: "Sleep on bag", score: 200, type: "positive"},
-            {text: "Push project on Bonk.fun", score: 100, type: "positive"},
-            {text: "Post cat meme during dip", score: 100, type: "positive"},
-            {text: "Use $SCC in bio", score: 1000, type: "positive"},
-            {text: "Use $SCC in bio", score: 100, type: "positive"},
-            {text: "Create copium art", score: 1200, type: "positive"},
-            {text: "Sleep on bag", score: 200, type: "positive"},
-            {text: "Pump trenches", score: 300, type: "positive"},
-            {text: "Engage in psyops", score: 200, type: "positive"},
-            {text: "Write lore for project", score: 200, type: "positive"},
-            {text: "Use custom cat PFP", score: 1500, type: "positive"},
-            {text: "Defend dev in VC", score: 100, type: "positive"},
-            {text: "Use $SCC in bio", score: 300, type: "positive"},
-            {text: "Engage in psyops", score: 600, type: "positive"},
-            {text: "Draw fan art of cat", score: 500, type: "positive"},
-            {text: "Draw fan art of cat", score: 600, type: "positive"},
-            {text: "Create copium art", score: 1500, type: "positive"},
-            {text: "Say 'we mun' with tears", score: 1000, type: "positive"},
-            {text: "Say 'we mun' with tears", score: 200, type: "positive"},
-            {text: "Blind faith in saluting cat", score: 2000, type: "positive"},
-            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
-            {text: "Create copium art", score: 200, type: "positive"},
-            {text: "Defend dev in VC", score: 400, type: "positive"},
-            {text: "Worship cat altar", score: 1500, type: "positive"},
-            {text: "Post cat meme during dip", score: 300, type: "positive"},
-            {text: "Post cat meme during dip", score: 100, type: "positive"},
-            {text: "Sleep on bag", score: 200, type: "positive"},
-            {text: "Say 'we mun' with tears", score: 300, type: "positive"},
-            {text: "Correct FUD with facts", score: 300, type: "positive"},
-            {text: "Respek charts", score: 1500, type: "positive"},
-            {text: "Make propaganda posters", score: 1500, type: "positive"},
-            {text: "Active in VC", score: 300, type: "positive"},
-            {text: "Post cat gif hourly", score: 200, type: "positive"},
-            {text: "Respek charts", score: 200, type: "positive"},
-            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
-            {text: "Correct FUD with facts", score: 600, type: "positive"},
-            {text: "Buy more at 3am", score: 300, type: "positive"},
-            {text: "Use $SCC in bio", score: 1000, type: "positive"},
-
-            // Continue with all 500 behaviors - truncated for space
-            // ... (behaviors 101-250 positive behaviors)
-
-            // Negative behaviors start here
-            {text: "Post negative tweet", score: -400, type: "negative"},
-            {text: "Complain during VC", score: -1000, type: "negative"},
-            {text: "Play 'Pump it up'", score: -400, type: "negative"},
-            {text: "Ask 'Where is dev?'", score: -1500, type: "negative"},
-            {text: "Ask for mod role", score: -600, type: "negative"},
-            {text: "Leave Telegram group", score: -200, type: "negative"},
-            {text: "Undermine lore", score: -600, type: "negative"},
-            {text: "Mention market cap", score: -400, type: "negative"},
-            {text: "Say 'I'm early exit'", score: -200, type: "negative"},
-            {text: "VC while drunk crying", score: -600, type: "negative"},
-            {text: "Exit at breakeven", score: -800, type: "negative"},
-            {text: "Sell before ATH", score: -400, type: "negative"},
-            {text: "Panjeet", score: -1000, type: "negative"},
-            {text: "Post bearish chart", score: -600, type: "negative"},
-            {text: "Ask for utility", score: -900, type: "negative"},
-            {text: "Insult the saluting cat", score: -1000, type: "negative"},
-            {text: "Leak alpha", score: -1500, type: "negative"},
-            {text: "Copy other coin memes", score: -800, type: "negative"},
-            {text: "Say 'Why mooning?'", score: -800, type: "negative"},
-            {text: "Beg for whitelist", score: -6969, type: "negative"},
-            {text: "Hate on community art", score: -2000, type: "negative"},
-            {text: "Post non-cat meme", score: -2000, type: "negative"},
-            {text: "Fake giveaway in chat", score: -2000, type: "negative"},
-            {text: "Shill in general chat", score: -800, type: "negative"},
-            {text: "Spam celebrity tag", score: -900, type: "negative"}
-            // ... (continue with remaining negative behaviors)
-        ];
-
-        // Function to get random behaviors for display
-        function getRandomBehaviors() {
-            const positiveActions = allBehaviors.filter(b => b.type === "positive");
-            const negativeActions = allBehaviors.filter(b => b.type === "negative");
-            
-            // Get 6 random from each type
-            const shuffledPositive = [...positiveActions].sort(() => 0.5 - Math.random()).slice(0, 6);
-            const shuffledNegative = [...negativeActions].sort(() => 0.5 - Math.random()).slice(0, 6);
-            
-            return {
-                positive: shuffledPositive,
-                negative: shuffledNegative
-            };
-        }
-
-        // Function to populate behavior sections with random selections
-        async function populateBehaviors() {
-            if (allBehaviors.length === 0) {
-                allBehaviors = await loadBehaviors();
-            }
-            
-            const { positive, negative } = getRandomBehaviors();
-            
-            // Clear existing behaviors and add random ones
-            const positiveContainer = document.querySelector('.positive .behavior-list');
-            const negativeContainer = document.querySelector('.negative .behavior-list');
-            
-            if (positiveContainer && negativeContainer) {
-                // Clear existing
-                positiveContainer.innerHTML = '';
-                negativeContainer.innerHTML = '';
-                
-                // Add positive behaviors
-                positive.forEach(behavior => {
-                    const behaviorDiv = document.createElement('div');
-                    behaviorDiv.className = 'behavior-item';
-                    behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
-                    behaviorDiv.innerHTML = `
-                        <div class="behavior-icon">✓</div>
-                        <div class="behavior-text">${behavior.text}</div>
-                        <div class="behavior-score">+${behavior.score}</div>
-                    `;
-                    positiveContainer.appendChild(behaviorDiv);
-                });
-                
-                // Add negative behaviors
-                negative.forEach(behavior => {
-                    const behaviorDiv = document.createElement('div');
-                    behaviorDiv.className = 'behavior-item';
-                    behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
-                    behaviorDiv.innerHTML = `
-                        <div class="behavior-icon">✗</div>
-                        <div class="behavior-text">${behavior.text}</div>
-                        <div class="behavior-score">${behavior.score}</div>
-                    `;
-                    negativeContainer.appendChild(behaviorDiv);
-                });
-            }
-        }
-
-        // Load random behaviors on page load and initialize
-        document.addEventListener('DOMContentLoaded', async function() {
-            await populateBehaviors();
-            updateScoreDisplay();
-            updateTweetPreview();
-            
-            // Add refresh button functionality
-            const refreshBtn = document.createElement('button');
-            refreshBtn.textContent = '🔄 REFRESH BEHAVIORS';
-            refreshBtn.className = 'cta-button';
-            refreshBtn.style.fontSize = '0.9rem';
-            refreshBtn.style.padding = '10px 20px';
-            refreshBtn.style.margin = '20px auto';
-            refreshBtn.style.display = 'block';
-            refreshBtn.onclick = populateBehaviors;
-            
-            // Insert refresh button after the behavior grid
-            const behaviorGrid = document.querySelector('.behavior-grid');
-            if (behaviorGrid) {
-                behaviorGrid.insertAdjacentElement('afterend', refreshBtn);
-            }
-        });
-
-        // Quiz System - 50 Question Pool
-        const allQuizQuestions = [
-            { question: "The chart is down 30%. What do you do?", answers: [{ text: "I buy more.", score: 600 }, { text: "Where is dev?", score: -1000 }, { text: "Post a saluting cat.", score: 300 }] },
-            { question: "Project hasn't tweeted in 12 hours.", answers: [{ text: "Dev is building.", score: 500 }, { text: "This is dead.", score: -800 }, { text: "Tag dev in all caps.", score: -400 }] },
-            { question: "What's true meme coin utility?", answers: [{ text: "The meme.", score: 1000 }, { text: "Strong fundamentals.", score: -600 }, { text: "Chart is utility.", score: 500 }] },
-            { question: "Someone gets banned in Telegram.", answers: [{ text: "Mods are kings.", score: 300 }, { text: "FREE HIM NOW.", score: -500 }, { text: "I didn't see anything.", score: 200 }] },
-            { question: "You bought the top again.", answers: [{ text: "Still holding.", score: 400 }, { text: "Blame influencer.", score: -900 }, { text: "Averaging up.", score: 500 }] },
-            { question: "VC is loud and chaotic.", answers: [{ text: "Join and scream.", score: 600 }, { text: "Ask for roadmap.", score: -300 }, { text: "Just vibe.", score: 400 }] },
-            { question: "They announce a celebrity collab.", answers: [{ text: "Exit.", score: 1000 }, { text: "Bullish.", score: -700 }, { text: "Only bullish if it's a cat.", score: 600 }] },
-            { question: "Red candle hits the chart.", answers: [{ text: "Zoom out.", score: 300 }, { text: "Rug pull?", score: -600 }, { text: "Post cope meme.", score: 200 }] },
-            { question: "How often do you check price?", answers: [{ text: "Once a day.", score: 900 }, { text: "Every minute.", score: -300 }, { text: "I turned off notifications.", score: 500 }] },
-            { question: "Someone calls a coin.", answers: [{ text: "Buy instantly.", score: -800 }, { text: "DYOR first.", score: 700 }, { text: "Ignore, I'm loyal.", score: 500 }] },
-            { question: "You see someone foot fetish post in main chat.", answers: [{ text: "+1.", score: -400 }, { text: "Report.", score: 200 }, { text: "Cat pic to neutralize.", score: 600 }] },
-            { question: "Dev voice reveals and sounds like a teen.", answers: [{ text: "King.", score: 300 }, { text: "Scammer.", score: -500 }, { text: "Post cat salute.", score: 500 }] },
-            { question: "You get rugged. Again.", answers: [{ text: "Lesson learned.", score: 400 }, { text: "SUE THEM.", score: -800 }, { text: "It's just money.", score: 500 }] },
-            { question: "Someone types 'When Lambo?'", answers: [{ text: "Downvote.", score: 300 }, { text: "I'm also wondering…", score: -600 }, { text: "Report to Social Credit Cat.", score: 700 }] },
-            { question: "Project uses Comic Sans font.", answers: [{ text: "Instant buy.", score: 500 }, { text: "This is a joke.", score: -400 }, { text: "It's based.", score: 800 }] },
-            { question: "Community wants a DAO vote.", answers: [{ text: "Vote yes for chaos.", score: 300 }, { text: "We don't need democracy.", score: 500 }, { text: "Vote no on everything.", score: -500 }] },
-            { question: "Chart hits ATH.", answers: [{ text: "Take profit.", score: -200 }, { text: "Post memes only.", score: 600 }, { text: "Buy more.", score: 400 }] },
-            { question: "Team locks LP for 1 month.", answers: [{ text: "That's solid.", score: -300 }, { text: "That's nothing.", score: -600 }, { text: "At least it's not unlocked.", score: 200 }] },
-            { question: "Whitepaper is 1 page.", answers: [{ text: "Perfect.", score: 800 }, { text: "Need more detail.", score: -200 }, { text: "I didn't read it.", score: 500 }] },
-            { question: "Dev starts dating a community member.", answers: [{ text: "Deserved.", score: 500 }, { text: "Conflict of interest.", score: -700 }, { text: "Add it to the roadmap.", score: 700 }] },
-            { question: "Meme coin hits top 100.", answers: [{ text: "Dump incoming.", score: -300 }, { text: "We go higher.", score: 400 }, { text: "I fear this is the end.", score: 100 }] },
-            { question: "You win a giveaway.", answers: [{ text: "Send back to the treasury.", score: 1000 }, { text: "Sell it instantly.", score: -800 }, { text: "Thank the Cat.", score: 600 }] },
-            { question: "Team releases a staking pool.", answers: [{ text: "Exit now.", score: 800 }, { text: "Let me farm.", score: -200 }, { text: "Ignore.", score: 300 }] },
-            { question: "You lose your seed phrase.", answers: [{ text: "LOL.", score: -1000 }, { text: "I wrote it on a napkin.", score: -500 }, { text: "Backed it up twice.", score: 700 }] },
-            { question: "Your mom asks what you do for work.", answers: [{ text: "I trade meme coins.", score: 800 }, { text: "I say I'm unemployed.", score: 200 }, { text: "I lie.", score: -600 }] },
-            { question: "Dev says 'we building.'", answers: [{ text: "King behavior.", score: 500 }, { text: "That means nothing.", score: -500 }, { text: "I believe.", score: 600 }] },
-            { question: "Telegram mods start banning for jokes.", answers: [{ text: "Mods = gods.", score: 400 }, { text: "I fight back.", score: -700 }, { text: "I log off.", score: 500 }] },
-            { question: "A whale sells 10% of supply.", answers: [{ text: "He'll be back.", score: 300 }, { text: "This is why I never trust anyone.", score: -400 }, { text: "I sell too.", score: -600 }] },
-            { question: "Favorite influencer flips on the project.", answers: [{ text: "They were always fake.", score: 700 }, { text: "They know something…", score: -500 }, { text: "Post cat with knife.", score: 600 }] },
-            { question: "Gas is 300 gwei.", answers: [{ text: "Touch nothing.", score: 600 }, { text: "I ape anyway.", score: -900 }, { text: "I go outside.", score: 500 }] },
-            { question: "You get added to a shill group.", answers: [{ text: "Report.", score: 700 }, { text: "Post project link.", score: -500 }, { text: "Leave instantly.", score: 500 }] },
-            { question: "Friend tells you to buy Doge.", answers: [{ text: "I say okay.", score: -400 }, { text: "I tell them about Solana gems.", score: 600 }, { text: "I send cat meme back.", score: 500 }] },
-            { question: "You sleep on the chart and miss 20x.", answers: [{ text: "It's fine.", score: 300 }, { text: "I cry publicly.", score: -200 }, { text: "I wasn't in it anyway.", score: 500 }] },
-            { question: "You find out the dev is 16.", answers: [{ text: "Respect.", score: 600 }, { text: "Run.", score: -300 }, { text: "Only bullish if he's based.", score: 400 }] },
-            { question: "Community creates custom cat stickers.", answers: [{ text: "I spam them daily.", score: 1000 }, { text: "I mute the chat.", score: -800 }, { text: "I make my own.", score: 700 }] },
-            { question: "You are asked to shill on Twitter.", answers: [{ text: "I create propaganda.", score: 800 }, { text: "Only if paid.", score: -400 }, { text: "I ghost them.", score: 200 }] },
-            { question: "Airdrop hunters join the chat.", answers: [{ text: "Mass kick.", score: 400 }, { text: "Welcome new frens.", score: -200 }, { text: "Teach them the lore.", score: 600 }] },
-            { question: "You see a 0 tax token trending.", answers: [{ text: "Instantly sus.", score: 700 }, { text: "This is bullish.", score: -400 }, { text: "Wait for second pump.", score: 200 }] },
-            { question: "Telegram chat hits 10K members.", answers: [{ text: "Bot check.", score: 500 }, { text: "Engagement farm time.", score: -300 }, { text: "Only real ones matter.", score: 600 }] },
-            { question: "Someone says 'only floor is the grave.'", answers: [{ text: "Bars.", score: 600 }, { text: "Unnecessary.", score: -300 }, { text: "Follow immediately.", score: 700 }] },
-            { question: "You leak a meme early.", answers: [{ text: "Oops.", score: -500 }, { text: "It's alpha.", score: 600 }, { text: "Leak more.", score: -400 }] },
-            { question: "Dev wallet buys back tokens.", answers: [{ text: "Resurrected.", score: 700 }, { text: "Exit pump.", score: -200 }, { text: "Ride it.", score: 500 }] },
-            { question: "You win a whitelist spot.", answers: [{ text: "Tell everyone.", score: 400 }, { text: "Sell it.", score: -600 }, { text: "Gloat silently.", score: 200 }] },
-            { question: "Market cap hits 1M.", answers: [{ text: "Exit liquidity.", score: -400 }, { text: "Start a cult.", score: 900 }, { text: "Set new target.", score: 600 }] },
-            { question: "Solana network goes down.", answers: [{ text: "We ride through it.", score: 300 }, { text: "Solana dead.", score: -500 }, { text: "Post funny cat gif.", score: 700 }] },
-            { question: "You lose 50% in one day.", answers: [{ text: "Based.", score: 200 }, { text: "Cry.", score: -200 }, { text: "Go again.", score: 500 }] },
-            { question: "ETH maxis flood the timeline.", answers: [{ text: "Ratio them.", score: 600 }, { text: "Respect.", score: -300 }, { text: "Ignore.", score: 200 }] },
-            { question: "Meme coin community wins a poll.", answers: [{ text: "Victory lap.", score: 700 }, { text: "Brigaded.", score: -400 }, { text: "Post cat crown meme.", score: 600 }] },
-            { question: "Dev sends a selfie.", answers: [{ text: "Bullish.", score: 500 }, { text: "Red flag.", score: -300 }, { text: "Screenshot it.", score: 200 }] },
-            { question: "Meme coin hits 100 holders.", answers: [{ text: "Organic growth.", score: 600 }, { text: "No thanks.", score: -500 }, { text: "Perfect timing.", score: 500 }] }
-        ];
-
-        let selectedQuestions = [];
-
-        let currentQuestionIndex = 0;
-        let quizScore = 0;
-        let godModeActivated = false;
-        let catClickCount = 0;
-
+        // Quiz Functions
         function openQuiz() {
             document.getElementById('quizModal').classList.add('active');
             resetQuiz();
@@ -1450,9 +1441,21 @@
             resetQuiz();
         }
 
-        // Easter Egg: God Mode
+        // Cat click easter egg
+        document.getElementById('catFallback').addEventListener('click', function() {
+            this.classList.add('clicked');
+            setTimeout(() => this.classList.remove('clicked'), 500);
+            
+            updateScore(-420, this);
+            
+            setTimeout(() => {
+                alert('You clicked the cat! -420 $SCC for disturbing our supreme leader! 😾');
+            }, 100);
+        });
+
+        // Quiz Cat Easter Egg: God Mode
         document.addEventListener('DOMContentLoaded', function() {
-            const quizCat = document.querySelector('.quiz-cat');
+            const quizCat = document.getElementById('quizCat');
             if (quizCat) {
                 quizCat.addEventListener('click', function() {
                     catClickCount++;
@@ -1468,9 +1471,18 @@
             }
         });
 
-        function scrollToTerminal() {
-            document.getElementById('terminal').scrollIntoView({ behavior: 'smooth' });
-        }
+        // Initialize everything on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateScoreDisplay();
+            updateTweetPreview();
+            populateBehaviors();
+            
+            console.log('Social Credit Cat website loaded successfully!');
+            console.log(`Total behaviors available: ${allBehaviors.length}`);
+            console.log(`Positive behaviors: ${allBehaviors.filter(b => b.type === 'positive').length}`);
+            console.log(`Negative behaviors: ${allBehaviors.filter(b => b.type === 'negative').length}`);
+            console.log(`Quiz questions available: ${allQuizQuestions.length}`);
+        });
     </script>
 </body>
 </html>

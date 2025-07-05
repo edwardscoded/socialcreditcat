@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$SOCIALCREDITCAT - Get Judged Now</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff41;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Main Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.03) 2px,
+                    rgba(0, 255, 65, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .site-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #00ff41;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #00ff41;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: transparent;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Quiz Modal Styles */
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .quiz-modal.active {
+            display: flex;
+        }
+
+        .quiz-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #00ff41;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .quiz-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ff4757;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .quiz-title {
+            font-size: 2rem;
+            color: #00ff41;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .quiz-subtitle {
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .quiz-warning {
+            color: #ff4757;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        /* Quiz Entry Screen */
+        .quiz-entry {
+            display: block;
+        }
+
+        .quiz-entry.hidden {
+            display: none;
+        }
+
+        .quiz-cat {
+            font-size: 6rem;
+            margin: 20px 0;
+            animation: catPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes catPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .quiz-start-btn {
+            background: transparent;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .quiz-start-btn:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Quiz Question Screen */
+        .quiz-question {
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+        }
+
+        .question-counter {
+            color: #ffab00;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .quiz-answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .answer-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #333;
+            color: #ffffff;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .answer-btn:hover {
+            border-color: #00ff41;
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .answer-score {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .answer-score.positive {
+            color: #00ff41;
+        }
+
+        .answer-score.negative {
+            color: #ff4757;
+        }
+
+        .score-display-quiz {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            color: #00ff41;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Quiz Results */
+        .quiz-results {
+            display: none;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: #00ff41;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .result-rank {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .result-verdict {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .result-cat {
+            font-size: 8rem;
+            margin: 20px 0;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .result-btn {
+            background: transparent;
+            border: 2px solid;
+            padding: 12px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .result-btn.share {
+            border-color: #1da1f2;
+            color: #1da1f2;
+        }
+
+        .result-btn.share:hover {
+            background: rgba(29, 161, 242, 0.1);
+        }
+
+        .result-btn.retry {
+            border-color: #ffab00;
+            color: #ffab00;
+        }
+
+        .result-btn.retry:hover {
+            background: rgba(255, 171, 0, 0.1);
+        }
+
+        /* Rank Colors */
+        .rank-divine { color: #ffd700; }
+        .rank-trusted { color: #00ff41; }
+        .rank-suspicious { color: #ffab00; }
+        .rank-panjeet { color: #ff4757; }
+        .rank-traitor { color: #8b0000; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quiz-content {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .quiz-title {
+                font-size: 1.5rem;
+            }
+
+            .question-text {
+                font-size: 1.2rem;
+            }
+
+            .result-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .cat-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cat-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cat-image:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .cat-image.clicked {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Behavior Grid */
+        .behavior-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .behavior-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .behavior-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .positive .behavior-title {
+            color: #00ff41;
+        }
+
+        .negative .behavior-title {
+            color: #ff4757;
+        }
+
+        .behavior-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .behavior-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .behavior-item:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .positive .behavior-item {
+            border-color: rgba(0, 255, 65, 0.3);
+        }
+
+        .positive .behavior-item:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .negative .behavior-item {
+            border-color: rgba(255, 71, 87, 0.3);
+        }
+
+        .negative .behavior-item:hover {
+            border-color: #ff4757;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.2);
+        }
+
+        .behavior-icon {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .positive .behavior-icon {
+            color: #00ff41;
+        }
+
+        .negative .behavior-icon {
+            color: #ff4757;
+        }
+
+        .behavior-text {
+            flex: 1;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        .behavior-score {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .positive .behavior-score {
+            color: #00ff41;
+        }
+
+        .negative .behavior-score {
+            color: #ff4757;
+        }
+
+        .behavior-item.clicked {
+            animation: btnClick 0.3s ease;
+        }
+
+        @keyframes btnClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        /* Lore Panel */
+        .lore-panel {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #333;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .lore-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #333;
+        }
+
+        .lore-header:hover {
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        .lore-icon {
+            color: #ffab00;
+            font-size: 1.5rem;
+        }
+
+        .lore-title {
+            color: #ffab00;
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex: 1;
+            letter-spacing: 1px;
+        }
+
+        .lore-toggle {
+            color: #ffab00;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .lore-toggle.expanded {
+            transform: rotate(180deg);
+        }
+
+        .lore-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            color: #cccccc;
+        }
+
+        .lore-content.expanded {
+            padding: 30px;
+            max-height: 2000px;
+            overflow-y: auto;
+        }
+
+        .lore-content h3 {
+            color: #ffab00;
+            margin: 20px 0 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .lore-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Share Panel */
+        .share-panel {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .tweet-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .share-btn {
+            background: transparent;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            padding: 15px 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .share-btn:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .site-title {
+                font-size: 2.5rem;
+            }
+
+            .score-display {
+                font-size: 3rem;
+            }
+
+            .cat-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .behavior-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .share-panel {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Glitch Effect for Score */
+        .score-glitch {
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Particle Effect */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: float 2s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="site-title">$SOCIALCREDIT<br>CAT</div>
+                    <div class="score-display" id="scoreValue">+50000000000</div>
+                    <button class="cta-button" onclick="openQuiz()">GET JUDGED NOW</button>
+                </div>
+                <div class="cat-container">
+                    <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/cat-image.jpg" 
+                         alt="Social Credit Cat" 
+                         class="cat-image" 
+                         id="catImage"
+                         onerror="this.style.display='none'; document.getElementById('catFallback').style.display='block';">
+                    <div id="catFallback" style="display: none; font-size: 15rem;">😿</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Behavior Grid -->
+        <div class="behavior-grid" id="terminal">
+            <div class="behavior-section positive">
+                <div class="behavior-title">POSITIVE BEHAVIORS</div>
+                <div class="behavior-list">
+                    <div class="behavior-item" onclick="updateScore(1000, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">Sleep on bag</div>
+                        <div class="behavior-score">+1000</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(300, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">Active in VC</div>
+                        <div class="behavior-score">+300</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(500, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">Pump trenches</div>
+                        <div class="behavior-score">+500</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(8000, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">idc abt price<br>we mun</div>
+                        <div class="behavior-score">+8000</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(400, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">Respek charts</div>
+                        <div class="behavior-score">+400</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-400, this)">
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text"></div>
+                        <div class="behavior-score">-400</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="behavior-section negative">
+                <div class="behavior-title">NEGATIVE INFRACTIONS</div>
+                <div class="behavior-list">
+                    <div class="behavior-item" onclick="updateScore(-200, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Play 'Pump it up'</div>
+                        <div class="behavior-score">-200</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-6969, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Why mooning?</div>
+                        <div class="behavior-score">-6969</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-1000, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Panjeet</div>
+                        <div class="behavior-score">-1000</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-5000, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Celeb Dickriding<br>(Ansem)</div>
+                        <div class="behavior-score">-5000</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-800, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Madapes call</div>
+                        <div class="behavior-score">-800</div>
+                    </div>
+                    <div class="behavior-item" onclick="updateScore(-900, this)">
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">Where is dev?</div>
+                        <div class="behavior-score">-900</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lore Panel -->
+        <div class="lore-panel">
+            <div class="lore-header" onclick="toggleLore()">
+                <div class="lore-icon">⚠</div>
+                <div class="lore-title">THE SOCIAL CREDIT CAT SYSTEM: A NATIONAL INITIATIVE</div>
+                <div class="lore-toggle" id="loreToggle">(^)</div>
+            </div>
+            <div class="lore-content" id="loreContent">
+                <h3>🐱 Executive Summary</h3>
+                <p>The Social Credit Cat System ($SCC) represents a revolutionary approach to behavioral monitoring in the digital asset space. Under the watchful eye of our feline overlord, citizens are continuously assessed based on their adherence to proper crypto etiquette and meme discipline.</p>
+                
+                <h3>🏛️ Integrity Monitoring Framework</h3>
+                <p>Our advanced Chart Morality Index tracks every digital interaction, ensuring that only the most diamond-handed individuals receive maximum social credit. The system employs cutting-edge technology to detect paper hands, FUD spreading, and other degenerative behaviors.</p>
+                
+                <h3>⚖️ Enforcement Mechanisms</h3>
+                <p><strong>Cat's Court:</strong> Repeat offenders face judgment by our supreme feline authority. Sentences range from temporary meme restrictions to permanent banishment from the sacred trenches.</p>
+                <p><strong>Panjeet Zone:</strong> Citizens with scores below -10,000 are relocated to the Panjeet Zone, where they must undergo intensive rehabilitation through forced diamond hand training.</p>
+                
+                <h3>🚨 Meme Violations Bureau</h3>
+                <p>The following infractions result in immediate score deductions and potential investigation by the Meme Violations Bureau:</p>
+                <p>• Asking "why mooning?" during obvious pump phases<br>
+                • Engaging in celebrity worship of known paper hands<br>
+                • Spreading FUD about chart patterns<br>
+                • Questioning the whereabouts of development teams</p>
+                
+                <h3>🎖️ Citizen Benefits</h3>
+                <p>High-scoring citizens enjoy exclusive privileges including priority access to alpha calls, premium meme distribution rights, and ceremonial recognition by the Social Credit Cat itself.</p>
+                
+                <p><em>Remember: The cat sees all, judges all, and meows for all. Your behavior is not just monitored—it's purr-fected.</em></p>
+            </div>
+        </div>
+
+        <!-- Share Panel -->
+        <div class="share-panel">
+            <div class="tweet-preview" id="tweetPreview">
+                I just got +9000 $SCC for sleeping on bag and respek charts. #SocialCreditCat 🐾
+            </div>
+            <button class="share-btn" onclick="shareToTwitter()">TWEET MY $SCC</button>
+        </div>
+
+        <!-- Quiz Modal -->
+        <div class="quiz-modal" id="quizModal">
+            <div class="quiz-content">
+                <button class="quiz-close" onclick="closeQuiz()">✕</button>
+                
+                <!-- Quiz Entry Screen -->
+                <div class="quiz-entry" id="quizEntry">
+                    <div class="quiz-title">🧪 BEGIN YOUR EVALUATION</div>
+                    <div class="quiz-subtitle">The Cat is watching. Answer wisely.</div>
+                    <div class="quiz-warning">Your responses will be recorded and judged.</div>
+                    <div class="quiz-cat">😿</div>
+                    <button class="quiz-start-btn" onclick="startQuiz()">GET JUDGED</button>
+                </div>
+
+                <!-- Quiz Question Screen -->
+                <div class="quiz-question" id="quizQuestion">
+                    <div class="question-counter" id="questionCounter">Question 1 of 10</div>
+                    <div class="question-text" id="questionText"></div>
+                    <div class="quiz-answers" id="quizAnswers"></div>
+                    <div class="score-display-quiz">Current SCC: <span id="currentQuizScore">???</span></div>
+                </div>
+
+                <!-- Quiz Results Screen -->
+                <div class="quiz-results" id="quizResults">
+                    <div class="quiz-title">JUDGMENT COMPLETE</div>
+                    <div class="result-score" id="resultScore">+0</div>
+                    <div class="result-rank" id="resultRank"></div>
+                    <div class="result-verdict" id="resultVerdict"></div>
+                    <div class="result-cat" id="resultCat">😿</div>
+                    <div class="result-actions">
+                        <button class="result-btn share" onclick="shareQuizResult()">SHARE RESULT</button>
+                        <button class="result-btn retry" onclick="retryQuiz()">TRY AGAIN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentScore = parseInt(localStorage.getItem('sccScore') || '50000000000');
+
+        function updateScoreDisplay() {
+            const scoreElement = document.getElementById('scoreValue');
+            const formattedScore = currentScore >= 0 ? `+${currentScore.toLocaleString()}` : currentScore.toLocaleString();
+            scoreElement.textContent = formattedScore;
+            
+            // Add glitch effect
+            scoreElement.classList.add('score-glitch');
+            setTimeout(() => scoreElement.classList.remove('score-glitch'), 300);
+        }
+
+        function updateScore(change, element) {
+            currentScore += change;
+            localStorage.setItem('sccScore', currentScore.toString());
+            updateScoreDisplay();
+            
+            // Add click animation
+            element.classList.add('clicked');
+            setTimeout(() => element.classList.remove('clicked'), 300);
+            
+            // Play sound
+            playSound();
+            
+            // Create particles
+            createParticles(element, change > 0);
+            
+            // Update tweet
+            updateTweetPreview();
+        }
+
+        function playSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+            } catch (e) {
+                // Fallback for browsers that don't support Web Audio API
+            }
+        }
+
+        function createParticles(element, positive) {
+            const rect = element.getBoundingClientRect();
+            const colors = positive ? ['#00ff41', '#00cc33'] : ['#ff4757', '#ff3742'];
+            
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = (rect.left + rect.width / 2) + 'px';
+                particle.style.top = (rect.top + rect.height / 2) + 'px';
+                particle.style.animationDelay = (Math.random() * 0.1) + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 2000);
+            }
+        }
+
+        function toggleLore() {
+            const content = document.getElementById('loreContent');
+            const toggle = document.getElementById('loreToggle');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+                toggle.textContent = '(^)';
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('expanded');
+                toggle.textContent = '(^)';
+            }
+        }
+
+        function updateTweetPreview() {
+            const preview = document.getElementById('tweetPreview');
+            const formattedScore = currentScore >= 0 ? `+${currentScore.toLocaleString()}` : currentScore.toLocaleString();
+            
+            let message;
+            if (currentScore >= 10000000) {
+                message = `I just achieved ${formattedScore} $SCC! The Social Credit Cat has blessed me with supreme diamond hands! 💎🐾 #SocialCreditCat`;
+            } else if (currentScore >= 0) {
+                message = `I just got ${formattedScore} $SCC for sleeping on bag and respek charts. #SocialCreditCat 🐾`;
+            } else {
+                message = `I'm at ${formattedScore} $SCC... The cat is NOT pleased. Straight to the Panjeet Zone! 😾🐾 #SocialCreditCat`;
+            }
+            
+            preview.textContent = message;
+        }
+
+        function shareToTwitter() {
+            const tweetText = document.getElementById('tweetPreview').textContent;
+            const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.open(tweetUrl, '_blank');
+        }
+
+        function scrollToTerminal() {
+            document.getElementById('terminal').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cat click easter egg
+        document.getElementById('catImage').addEventListener('click', function() {
+            this.classList.add('clicked');
+            setTimeout(() => this.classList.remove('clicked'), 500);
+            
+            updateScore(-420, this);
+            
+            setTimeout(() => {
+                alert('You clicked the cat! -420 $SCC for disturbing our supreme leader! 😾');
+            }, 100);
+        });
+
+        // Initialize
+        updateScoreDisplay();
+        updateTweetPreview();
+
+        // Initialize with dynamic behavior loading
+        let allBehaviors = [];
+        
+        // Function to load all 500 behaviors from CSV
+        async function loadBehaviors() {
+            try {
+                const csvData = await window.fs.readFile('Complete_Social_Credit_Cat_Actions.csv', { encoding: 'utf8' });
+                
+                // Parse CSV using simple parsing (since we know the structure)
+                const lines = csvData.split('\n');
+                const behaviors = [];
+                
+                for (let i = 1; i < lines.length; i++) { // Skip header
+                    const line = lines[i].trim();
+                    if (line) {
+                        const parts = line.split(',');
+                        if (parts.length >= 3) {
+                            const action = parts[0].replace(/"/g, '').trim();
+                            const points = parseInt(parts[1]);
+                            const type = parts[2].replace(/"/g, '').trim().toLowerCase();
+                            
+                            if (action && !isNaN(points) && type) {
+                                behaviors.push({
+                                    text: action,
+                                    score: points,
+                                    type: type
+                                });
+                            }
+                        }
+                    }
+                }
+                
+                console.log(`Loaded ${behaviors.length} behaviors from CSV`);
+                return behaviors;
+            } catch (error) {
+                console.log('Could not load CSV, using fallback behaviors');
+                // Fallback to basic behaviors if CSV fails
+                return [
+                    {text: "Sleep on bag", score: 1000, type: "positive"},
+                    {text: "Active in VC", score: 300, type: "positive"},
+                    {text: "Pump trenches", score: 500, type: "positive"},
+                    {text: "idc abt price we mun", score: 8000, type: "positive"},
+                    {text: "Respek charts", score: 400, type: "positive"},
+                    {text: "Blind faith in saluting cat", score: 2000, type: "positive"},
+                    {text: "Play 'Pump it up'", score: -200, type: "negative"},
+                    {text: "Why mooning?", score: -6969, type: "negative"},
+                    {text: "Panjeet", score: -1000, type: "negative"},
+                    {text: "Celeb Dickriding (Ansem)", score: -5000, type: "negative"},
+                    {text: "Madapes call", score: -800, type: "negative"},
+                    {text: "Where is dev?", score: -900, type: "negative"}
+                ];
+            }
+        }text: "Create meme thread", score: 400, type: "positive"},
+            {text: "Buy more at 3am", score: 1200, type: "positive"},
+            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
+            {text: "Post cat meme during dip", score: 400, type: "positive"},
+            {text: "Sleep on bag", score: 200, type: "positive"},
+            {text: "Worship cat altar", score: 1200, type: "positive"},
+            {text: "Buy more at 3am", score: 2000, type: "positive"},
+            {text: "Create meme thread", score: 800, type: "positive"},
+            {text: "Say 'we mun' with tears", score: 500, type: "positive"},
+            {text: "Write lore for project", score: 300, type: "positive"},
+
+            // Behaviors 51-100
+            {text: "Sleep on bag", score: 500, type: "positive"},
+            {text: "Correct FUD with facts", score: 1200, type: "positive"},
+            {text: "Engage in psyops", score: 800, type: "positive"},
+            {text: "Engage in psyops", score: 800, type: "positive"},
+            {text: "Create meme thread", score: 300, type: "positive"},
+            {text: "Buy more at 3am", score: 600, type: "positive"},
+            {text: "Vow eternal hold", score: 800, type: "positive"},
+            {text: "Run community game", score: 200, type: "positive"},
+            {text: "Engage in psyops", score: 800, type: "positive"},
+            {text: "Run community game", score: 500, type: "positive"},
+            {text: "Make propaganda posters", score: 500, type: "positive"},
+            {text: "Correct FUD with facts", score: 1500, type: "positive"},
+            {text: "Sleep on bag", score: 200, type: "positive"},
+            {text: "Push project on Bonk.fun", score: 100, type: "positive"},
+            {text: "Post cat meme during dip", score: 100, type: "positive"},
+            {text: "Use $SCC in bio", score: 1000, type: "positive"},
+            {text: "Use $SCC in bio", score: 100, type: "positive"},
+            {text: "Create copium art", score: 1200, type: "positive"},
+            {text: "Sleep on bag", score: 200, type: "positive"},
+            {text: "Pump trenches", score: 300, type: "positive"},
+            {text: "Engage in psyops", score: 200, type: "positive"},
+            {text: "Write lore for project", score: 200, type: "positive"},
+            {text: "Use custom cat PFP", score: 1500, type: "positive"},
+            {text: "Defend dev in VC", score: 100, type: "positive"},
+            {text: "Use $SCC in bio", score: 300, type: "positive"},
+            {text: "Engage in psyops", score: 600, type: "positive"},
+            {text: "Draw fan art of cat", score: 500, type: "positive"},
+            {text: "Draw fan art of cat", score: 600, type: "positive"},
+            {text: "Create copium art", score: 1500, type: "positive"},
+            {text: "Say 'we mun' with tears", score: 1000, type: "positive"},
+            {text: "Say 'we mun' with tears", score: 200, type: "positive"},
+            {text: "Blind faith in saluting cat", score: 2000, type: "positive"},
+            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
+            {text: "Create copium art", score: 200, type: "positive"},
+            {text: "Defend dev in VC", score: 400, type: "positive"},
+            {text: "Worship cat altar", score: 1500, type: "positive"},
+            {text: "Post cat meme during dip", score: 300, type: "positive"},
+            {text: "Post cat meme during dip", score: 100, type: "positive"},
+            {text: "Sleep on bag", score: 200, type: "positive"},
+            {text: "Say 'we mun' with tears", score: 300, type: "positive"},
+            {text: "Correct FUD with facts", score: 300, type: "positive"},
+            {text: "Respek charts", score: 1500, type: "positive"},
+            {text: "Make propaganda posters", score: 1500, type: "positive"},
+            {text: "Active in VC", score: 300, type: "positive"},
+            {text: "Post cat gif hourly", score: 200, type: "positive"},
+            {text: "Respek charts", score: 200, type: "positive"},
+            {text: "Push project on Bonk.fun", score: 200, type: "positive"},
+            {text: "Correct FUD with facts", score: 600, type: "positive"},
+            {text: "Buy more at 3am", score: 300, type: "positive"},
+            {text: "Use $SCC in bio", score: 1000, type: "positive"},
+
+            // Continue with all 500 behaviors - truncated for space
+            // ... (behaviors 101-250 positive behaviors)
+
+            // Negative behaviors start here
+            {text: "Post negative tweet", score: -400, type: "negative"},
+            {text: "Complain during VC", score: -1000, type: "negative"},
+            {text: "Play 'Pump it up'", score: -400, type: "negative"},
+            {text: "Ask 'Where is dev?'", score: -1500, type: "negative"},
+            {text: "Ask for mod role", score: -600, type: "negative"},
+            {text: "Leave Telegram group", score: -200, type: "negative"},
+            {text: "Undermine lore", score: -600, type: "negative"},
+            {text: "Mention market cap", score: -400, type: "negative"},
+            {text: "Say 'I'm early exit'", score: -200, type: "negative"},
+            {text: "VC while drunk crying", score: -600, type: "negative"},
+            {text: "Exit at breakeven", score: -800, type: "negative"},
+            {text: "Sell before ATH", score: -400, type: "negative"},
+            {text: "Panjeet", score: -1000, type: "negative"},
+            {text: "Post bearish chart", score: -600, type: "negative"},
+            {text: "Ask for utility", score: -900, type: "negative"},
+            {text: "Insult the saluting cat", score: -1000, type: "negative"},
+            {text: "Leak alpha", score: -1500, type: "negative"},
+            {text: "Copy other coin memes", score: -800, type: "negative"},
+            {text: "Say 'Why mooning?'", score: -800, type: "negative"},
+            {text: "Beg for whitelist", score: -6969, type: "negative"},
+            {text: "Hate on community art", score: -2000, type: "negative"},
+            {text: "Post non-cat meme", score: -2000, type: "negative"},
+            {text: "Fake giveaway in chat", score: -2000, type: "negative"},
+            {text: "Shill in general chat", score: -800, type: "negative"},
+            {text: "Spam celebrity tag", score: -900, type: "negative"}
+            // ... (continue with remaining negative behaviors)
+        ];
+
+        // Function to get random behaviors for display
+        function getRandomBehaviors() {
+            const positiveActions = allBehaviors.filter(b => b.type === "positive");
+            const negativeActions = allBehaviors.filter(b => b.type === "negative");
+            
+            // Get 6 random from each type
+            const shuffledPositive = [...positiveActions].sort(() => 0.5 - Math.random()).slice(0, 6);
+            const shuffledNegative = [...negativeActions].sort(() => 0.5 - Math.random()).slice(0, 6);
+            
+            return {
+                positive: shuffledPositive,
+                negative: shuffledNegative
+            };
+        }
+
+        // Function to populate behavior sections with random selections
+        async function populateBehaviors() {
+            if (allBehaviors.length === 0) {
+                allBehaviors = await loadBehaviors();
+            }
+            
+            const { positive, negative } = getRandomBehaviors();
+            
+            // Clear existing behaviors and add random ones
+            const positiveContainer = document.querySelector('.positive .behavior-list');
+            const negativeContainer = document.querySelector('.negative .behavior-list');
+            
+            if (positiveContainer && negativeContainer) {
+                // Clear existing
+                positiveContainer.innerHTML = '';
+                negativeContainer.innerHTML = '';
+                
+                // Add positive behaviors
+                positive.forEach(behavior => {
+                    const behaviorDiv = document.createElement('div');
+                    behaviorDiv.className = 'behavior-item';
+                    behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
+                    behaviorDiv.innerHTML = `
+                        <div class="behavior-icon">✓</div>
+                        <div class="behavior-text">${behavior.text}</div>
+                        <div class="behavior-score">+${behavior.score}</div>
+                    `;
+                    positiveContainer.appendChild(behaviorDiv);
+                });
+                
+                // Add negative behaviors
+                negative.forEach(behavior => {
+                    const behaviorDiv = document.createElement('div');
+                    behaviorDiv.className = 'behavior-item';
+                    behaviorDiv.onclick = () => updateScore(behavior.score, behaviorDiv);
+                    behaviorDiv.innerHTML = `
+                        <div class="behavior-icon">✗</div>
+                        <div class="behavior-text">${behavior.text}</div>
+                        <div class="behavior-score">${behavior.score}</div>
+                    `;
+                    negativeContainer.appendChild(behaviorDiv);
+                });
+            }
+        }
+
+        // Load random behaviors on page load and initialize
+        document.addEventListener('DOMContentLoaded', async function() {
+            await populateBehaviors();
+            updateScoreDisplay();
+            updateTweetPreview();
+            
+            // Add refresh button functionality
+            const refreshBtn = document.createElement('button');
+            refreshBtn.textContent = '🔄 REFRESH BEHAVIORS';
+            refreshBtn.className = 'cta-button';
+            refreshBtn.style.fontSize = '0.9rem';
+            refreshBtn.style.padding = '10px 20px';
+            refreshBtn.style.margin = '20px auto';
+            refreshBtn.style.display = 'block';
+            refreshBtn.onclick = populateBehaviors;
+            
+            // Insert refresh button after the behavior grid
+            const behaviorGrid = document.querySelector('.behavior-grid');
+            if (behaviorGrid) {
+                behaviorGrid.insertAdjacentElement('afterend', refreshBtn);
+            }
+        });
+
+        // Quiz System - 50 Question Pool
+        const allQuizQuestions = [
+            { question: "The chart is down 30%. What do you do?", answers: [{ text: "I buy more.", score: 600 }, { text: "Where is dev?", score: -1000 }, { text: "Post a saluting cat.", score: 300 }] },
+            { question: "Project hasn't tweeted in 12 hours.", answers: [{ text: "Dev is building.", score: 500 }, { text: "This is dead.", score: -800 }, { text: "Tag dev in all caps.", score: -400 }] },
+            { question: "What's true meme coin utility?", answers: [{ text: "The meme.", score: 1000 }, { text: "Strong fundamentals.", score: -600 }, { text: "Chart is utility.", score: 500 }] },
+            { question: "Someone gets banned in Telegram.", answers: [{ text: "Mods are kings.", score: 300 }, { text: "FREE HIM NOW.", score: -500 }, { text: "I didn't see anything.", score: 200 }] },
+            { question: "You bought the top again.", answers: [{ text: "Still holding.", score: 400 }, { text: "Blame influencer.", score: -900 }, { text: "Averaging up.", score: 500 }] },
+            { question: "VC is loud and chaotic.", answers: [{ text: "Join and scream.", score: 600 }, { text: "Ask for roadmap.", score: -300 }, { text: "Just vibe.", score: 400 }] },
+            { question: "They announce a celebrity collab.", answers: [{ text: "Exit.", score: 1000 }, { text: "Bullish.", score: -700 }, { text: "Only bullish if it's a cat.", score: 600 }] },
+            { question: "Red candle hits the chart.", answers: [{ text: "Zoom out.", score: 300 }, { text: "Rug pull?", score: -600 }, { text: "Post cope meme.", score: 200 }] },
+            { question: "How often do you check price?", answers: [{ text: "Once a day.", score: 900 }, { text: "Every minute.", score: -300 }, { text: "I turned off notifications.", score: 500 }] },
+            { question: "Someone calls a coin.", answers: [{ text: "Buy instantly.", score: -800 }, { text: "DYOR first.", score: 700 }, { text: "Ignore, I'm loyal.", score: 500 }] },
+            { question: "You see someone foot fetish post in main chat.", answers: [{ text: "+1.", score: -400 }, { text: "Report.", score: 200 }, { text: "Cat pic to neutralize.", score: 600 }] },
+            { question: "Dev voice reveals and sounds like a teen.", answers: [{ text: "King.", score: 300 }, { text: "Scammer.", score: -500 }, { text: "Post cat salute.", score: 500 }] },
+            { question: "You get rugged. Again.", answers: [{ text: "Lesson learned.", score: 400 }, { text: "SUE THEM.", score: -800 }, { text: "It's just money.", score: 500 }] },
+            { question: "Someone types 'When Lambo?'", answers: [{ text: "Downvote.", score: 300 }, { text: "I'm also wondering…", score: -600 }, { text: "Report to Social Credit Cat.", score: 700 }] },
+            { question: "Project uses Comic Sans font.", answers: [{ text: "Instant buy.", score: 500 }, { text: "This is a joke.", score: -400 }, { text: "It's based.", score: 800 }] },
+            { question: "Community wants a DAO vote.", answers: [{ text: "Vote yes for chaos.", score: 300 }, { text: "We don't need democracy.", score: 500 }, { text: "Vote no on everything.", score: -500 }] },
+            { question: "Chart hits ATH.", answers: [{ text: "Take profit.", score: -200 }, { text: "Post memes only.", score: 600 }, { text: "Buy more.", score: 400 }] },
+            { question: "Team locks LP for 1 month.", answers: [{ text: "That's solid.", score: -300 }, { text: "That's nothing.", score: -600 }, { text: "At least it's not unlocked.", score: 200 }] },
+            { question: "Whitepaper is 1 page.", answers: [{ text: "Perfect.", score: 800 }, { text: "Need more detail.", score: -200 }, { text: "I didn't read it.", score: 500 }] },
+            { question: "Dev starts dating a community member.", answers: [{ text: "Deserved.", score: 500 }, { text: "Conflict of interest.", score: -700 }, { text: "Add it to the roadmap.", score: 700 }] },
+            { question: "Meme coin hits top 100.", answers: [{ text: "Dump incoming.", score: -300 }, { text: "We go higher.", score: 400 }, { text: "I fear this is the end.", score: 100 }] },
+            { question: "You win a giveaway.", answers: [{ text: "Send back to the treasury.", score: 1000 }, { text: "Sell it instantly.", score: -800 }, { text: "Thank the Cat.", score: 600 }] },
+            { question: "Team releases a staking pool.", answers: [{ text: "Exit now.", score: 800 }, { text: "Let me farm.", score: -200 }, { text: "Ignore.", score: 300 }] },
+            { question: "You lose your seed phrase.", answers: [{ text: "LOL.", score: -1000 }, { text: "I wrote it on a napkin.", score: -500 }, { text: "Backed it up twice.", score: 700 }] },
+            { question: "Your mom asks what you do for work.", answers: [{ text: "I trade meme coins.", score: 800 }, { text: "I say I'm unemployed.", score: 200 }, { text: "I lie.", score: -600 }] },
+            { question: "Dev says 'we building.'", answers: [{ text: "King behavior.", score: 500 }, { text: "That means nothing.", score: -500 }, { text: "I believe.", score: 600 }] },
+            { question: "Telegram mods start banning for jokes.", answers: [{ text: "Mods = gods.", score: 400 }, { text: "I fight back.", score: -700 }, { text: "I log off.", score: 500 }] },
+            { question: "A whale sells 10% of supply.", answers: [{ text: "He'll be back.", score: 300 }, { text: "This is why I never trust anyone.", score: -400 }, { text: "I sell too.", score: -600 }] },
+            { question: "Favorite influencer flips on the project.", answers: [{ text: "They were always fake.", score: 700 }, { text: "They know something…", score: -500 }, { text: "Post cat with knife.", score: 600 }] },
+            { question: "Gas is 300 gwei.", answers: [{ text: "Touch nothing.", score: 600 }, { text: "I ape anyway.", score: -900 }, { text: "I go outside.", score: 500 }] },
+            { question: "You get added to a shill group.", answers: [{ text: "Report.", score: 700 }, { text: "Post project link.", score: -500 }, { text: "Leave instantly.", score: 500 }] },
+            { question: "Friend tells you to buy Doge.", answers: [{ text: "I say okay.", score: -400 }, { text: "I tell them about Solana gems.", score: 600 }, { text: "I send cat meme back.", score: 500 }] },
+            { question: "You sleep on the chart and miss 20x.", answers: [{ text: "It's fine.", score: 300 }, { text: "I cry publicly.", score: -200 }, { text: "I wasn't in it anyway.", score: 500 }] },
+            { question: "You find out the dev is 16.", answers: [{ text: "Respect.", score: 600 }, { text: "Run.", score: -300 }, { text: "Only bullish if he's based.", score: 400 }] },
+            { question: "Community creates custom cat stickers.", answers: [{ text: "I spam them daily.", score: 1000 }, { text: "I mute the chat.", score: -800 }, { text: "I make my own.", score: 700 }] },
+            { question: "You are asked to shill on Twitter.", answers: [{ text: "I create propaganda.", score: 800 }, { text: "Only if paid.", score: -400 }, { text: "I ghost them.", score: 200 }] },
+            { question: "Airdrop hunters join the chat.", answers: [{ text: "Mass kick.", score: 400 }, { text: "Welcome new frens.", score: -200 }, { text: "Teach them the lore.", score: 600 }] },
+            { question: "You see a 0 tax token trending.", answers: [{ text: "Instantly sus.", score: 700 }, { text: "This is bullish.", score: -400 }, { text: "Wait for second pump.", score: 200 }] },
+            { question: "Telegram chat hits 10K members.", answers: [{ text: "Bot check.", score: 500 }, { text: "Engagement farm time.", score: -300 }, { text: "Only real ones matter.", score: 600 }] },
+            { question: "Someone says 'only floor is the grave.'", answers: [{ text: "Bars.", score: 600 }, { text: "Unnecessary.", score: -300 }, { text: "Follow immediately.", score: 700 }] },
+            { question: "You leak a meme early.", answers: [{ text: "Oops.", score: -500 }, { text: "It's alpha.", score: 600 }, { text: "Leak more.", score: -400 }] },
+            { question: "Dev wallet buys back tokens.", answers: [{ text: "Resurrected.", score: 700 }, { text: "Exit pump.", score: -200 }, { text: "Ride it.", score: 500 }] },
+            { question: "You win a whitelist spot.", answers: [{ text: "Tell everyone.", score: 400 }, { text: "Sell it.", score: -600 }, { text: "Gloat silently.", score: 200 }] },
+            { question: "Market cap hits 1M.", answers: [{ text: "Exit liquidity.", score: -400 }, { text: "Start a cult.", score: 900 }, { text: "Set new target.", score: 600 }] },
+            { question: "Solana network goes down.", answers: [{ text: "We ride through it.", score: 300 }, { text: "Solana dead.", score: -500 }, { text: "Post funny cat gif.", score: 700 }] },
+            { question: "You lose 50% in one day.", answers: [{ text: "Based.", score: 200 }, { text: "Cry.", score: -200 }, { text: "Go again.", score: 500 }] },
+            { question: "ETH maxis flood the timeline.", answers: [{ text: "Ratio them.", score: 600 }, { text: "Respect.", score: -300 }, { text: "Ignore.", score: 200 }] },
+            { question: "Meme coin community wins a poll.", answers: [{ text: "Victory lap.", score: 700 }, { text: "Brigaded.", score: -400 }, { text: "Post cat crown meme.", score: 600 }] },
+            { question: "Dev sends a selfie.", answers: [{ text: "Bullish.", score: 500 }, { text: "Red flag.", score: -300 }, { text: "Screenshot it.", score: 200 }] },
+            { question: "Meme coin hits 100 holders.", answers: [{ text: "Organic growth.", score: 600 }, { text: "No thanks.", score: -500 }, { text: "Perfect timing.", score: 500 }] }
+        ];
+
+        let selectedQuestions = [];
+
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+        let godModeActivated = false;
+        let catClickCount = 0;
+
+        function openQuiz() {
+            document.getElementById('quizModal').classList.add('active');
+            resetQuiz();
+        }
+
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            quizScore = 0;
+            catClickCount = 0;
+            godModeActivated = false;
+            
+            // Select 10 random questions
+            selectedQuestions = getRandomQuestions(10);
+            
+            document.getElementById('quizEntry').classList.remove('hidden');
+            document.getElementById('quizQuestion').classList.remove('active');
+            document.getElementById('quizResults').classList.remove('active');
+        }
+
+        function getRandomQuestions(count) {
+            const shuffled = [...allQuizQuestions].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function startQuiz() {
+            document.getElementById('quizEntry').classList.add('hidden');
+            document.getElementById('quizQuestion').classList.add('active');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = selectedQuestions[currentQuestionIndex];
+            document.getElementById('questionCounter').textContent = `Question ${currentQuestionIndex + 1} of ${selectedQuestions.length}`;
+            document.getElementById('questionText').textContent = question.question;
+            
+            // Hide score during quiz
+            document.getElementById('currentQuizScore').textContent = '???';
+
+            const answersContainer = document.getElementById('quizAnswers');
+            answersContainer.innerHTML = '';
+
+            question.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'answer-btn';
+                // Don't show scores during quiz
+                button.innerHTML = `${answer.text}`;
+                button.onclick = () => selectAnswer(answer.score);
+                answersContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(score) {
+            quizScore += score;
+            playSound();
+            
+            // Add particles
+            createParticles(event.target, score > 0);
+            
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < selectedQuestions.length) {
+                setTimeout(showQuestion, 500);
+            } else {
+                setTimeout(showResults, 500);
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizQuestion').classList.remove('active');
+            document.getElementById('quizResults').classList.add('active');
+            
+            // God mode bonus
+            if (godModeActivated) {
+                quizScore += 2000;
+            }
+            
+            const { rank, verdict, cat, className } = getVerdict(quizScore);
+            
+            document.getElementById('resultScore').textContent = quizScore >= 0 ? `+${quizScore}` : quizScore;
+            document.getElementById('resultRank').textContent = rank;
+            document.getElementById('resultRank').className = `result-rank ${className}`;
+            document.getElementById('resultVerdict').textContent = verdict;
+            document.getElementById('resultCat').textContent = cat;
+            
+            // Save quiz result
+            localStorage.setItem('lastQuizScore', quizScore.toString());
+        }
+
+        function getVerdict(score) {
+            if (score > 6000) {
+                return {
+                    rank: "✨ DIVINE HOLDER",
+                    verdict: "You are blessed by the Cat. Meme on, chosen one. Your diamond hands shine brighter than the charts themselves.",
+                    cat: "😇",
+                    className: "rank-divine"
+                };
+            } else if (score >= 3000) {
+                return {
+                    rank: "✅ TRUSTED DEGEN",
+                    verdict: "You walk the path of based behavior. The Cat acknowledges your dedication to the trenches.",
+                    cat: "😸",
+                    className: "rank-trusted"
+                };
+            } else if (score >= 0) {
+                return {
+                    rank: "😼 SUSPICIOUS DEGEN",
+                    verdict: "Hmm. Watched. Closely. Your behavior suggests paper hand tendencies. Improvement required.",
+                    cat: "🤨",
+                    className: "rank-suspicious"
+                };
+            } else if (score >= -2999) {
+                return {
+                    rank: "🚫 PANJEET",
+                    verdict: "Access to BONK revoked. Report to re-education camp immediately. Your FUD brings shame to all cats.",
+                    cat: "😾",
+                    className: "rank-panjeet"
+                };
+            } else {
+                return {
+                    rank: "💀 CHART TRAITOR",
+                    verdict: "You are beyond salvation. No memes will help. The Cat has marked you for eternal paper hands.",
+                    cat: "☠️",
+                    className: "rank-traitor"
+                };
+            }
+        }
+
+        function shareQuizResult() {
+            const score = quizScore >= 0 ? `+${quizScore}` : quizScore;
+            const { rank } = getVerdict(quizScore);
+            const tweetText = `I just scored ${score} SCC on the Social Credit Cat Quiz! Rank: ${rank} 🐾\n\nGet judged: socialcreditcat.fun\n\n#SocialCreditCat #MemeCoin #CryptoDegens`;
+            const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.open(tweetUrl, '_blank');
+        }
+
+        function retryQuiz() {
+            resetQuiz();
+        }
+
+        // Easter Egg: God Mode
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizCat = document.querySelector('.quiz-cat');
+            if (quizCat) {
+                quizCat.addEventListener('click', function() {
+                    catClickCount++;
+                    if (catClickCount >= 3 && !godModeActivated) {
+                        godModeActivated = true;
+                        this.style.color = '#ffd700';
+                        this.textContent = '👑';
+                        setTimeout(() => {
+                            alert('GOD MODE ACTIVATED! +2000 SCC Bonus! 👑');
+                        }, 100);
+                    }
+                });
+            }
+        });
+
+        function scrollToTerminal() {
+            document.getElementById('terminal').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
